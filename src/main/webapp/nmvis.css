@@ -1,0 +1,53 @@
+/* This is the main CSS for the NMVis website. */
+html {
+  height: 100vh; /* set viewport constraint */
+  min-height: 100%; /* enforce height */
+
+}
+body {
+  justify-content: center;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+  padding-top: 2em;
+}
+
+.textInput {
+  width: 100%;
+
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+#submitButton {
+  vertical-align: middle;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+#visBox {
+  width: 100vw;
+  height: 80vh;
+  justify-content: center;
+  border: 1px solid lightgray;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+#myVisBox {
+  width: 100vw;
+  height: 80vh;
+  justify-content: center;
+  border: 1px solid lightgray;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+.carousel i {
+  color: black;
+  font-size: 3em;
+}
