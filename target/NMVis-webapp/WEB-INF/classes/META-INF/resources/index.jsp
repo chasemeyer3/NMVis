@@ -105,6 +105,7 @@
               // var response = JSON.parse(xhttp.responseText);
               var data = JSON.parse(this.response);
 
+              alert(data);
               const respP = document.createElement('p');
               respP.value = data;
 

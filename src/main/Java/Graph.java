@@ -45,8 +45,8 @@ public class Graph {
                 line = line.trim();
                 String[] splitLine = line.split("\t");
                 if (splitLine.length == 2){
-                    Integer n1 = Integer.getInteger(splitLine[0]);
-                    Integer n2 = Integer.getInteger(splitLine[1]);
+                    Integer n1 = new Integer(splitLine[0]);
+                    Integer n2 = new Integer(splitLine[1]);
                     addEdge(n1, n2);
                 }
                 else {
@@ -68,8 +68,8 @@ public class Graph {
             line = line.trim();
             String[] splitLine = line.split("\t");
             if (splitLine.length == 2){
-                Integer n1 = Integer.getInteger(splitLine[0]);
-                Integer n2 = Integer.getInteger(splitLine[1]);
+                Integer n1 = new Integer(splitLine[0]);
+                Integer n2 = new Integer(splitLine[1]);
                 addEdge(n1, n2);
             }
             else {
@@ -88,13 +88,13 @@ public class Graph {
     // adds new edge from n1 to n2
     public void addEdge(Integer n1, Integer n2) {
         if (!nodes.containsKey(n1)){
-            nodesJSONArray.put(new JSONObject().put("id", n1).put("label", "Protein" + n1.toString()));
+            nodesJSONArray.put(new JSONObject().put("id", n1).put("label", "Protein " + n1.toString()));
             nodes.put(n1, new Node(n1));
             size++;
         }
         // add the new edge
         if (!nodes.containsKey(n2)){
-            nodesJSONArray.put(new JSONObject().put("id", n2).put("label", "Protein" + n2.toString()));
+            nodesJSONArray.put(new JSONObject().put("id", n2).put("label", "Protein " + n2.toString()));
             nodes.put(n2, new Node(n2));
             size++;
         }
