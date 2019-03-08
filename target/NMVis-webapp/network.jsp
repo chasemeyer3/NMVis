@@ -24,14 +24,15 @@
       <!-- Jquery - Microsoft CDN -->
       <!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> -->
       <!-- vis.js -->
-      <script src="./exampleGraphJSON.js"></script>
-      <script type="text/javascript" src="../src/libs/vis-4.21.0/dist/vis.min.js"></script>
-      <link href="../src/libs/vis-4.21.0/dist/vis-network.min.css" rel="stylesheet" type="text/css">
+      <%-- <script src="./exampleGraphJSON.js"></script>
+      <script type="text/javascript" src="./resources/vis-4.21.0/dist/vis.min.js"></script>
+      <link href="./resources/vis-4.21.0/dist/vis-network.min.css" rel="stylesheet" type="text/css"> --%>
 
   </head>
   <body>
     <div class="container" id="myVisBox"></div>
     <p>THIS IS THE RESPONSE</p>
+    
 
 
     <footer>© 2019 Chase Meyer</footer>

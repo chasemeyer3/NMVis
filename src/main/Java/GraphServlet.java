@@ -4,6 +4,7 @@ import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 
 
@@ -11,6 +12,8 @@ import javax.servlet.http.*;
         name = "Graph",
         urlPatterns = {"/graph"}
 )
+
+@MultipartConfig
 public class GraphServlet extends HttpServlet {
 
     //GraphService graphService = new GraphService(); // not using this as of now
@@ -33,17 +36,17 @@ public class GraphServlet extends HttpServlet {
             }
         }
 
-        //resp.setContentType("application/json");
-        req.setAttribute("graphJSON",reqGraph.generateJSON());
+        resp.setContentType("application/json");
+        //req.setAttribute("graphJSON",reqGraph.generateJSON());
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("network.jsp");
+        //RequestDispatcher dispatcher = req.getRequestDispatcher("network.jsp");
 
         // was using these for get but I think i have to use POST since I am using multipart form data
-//        PrintWriter out = resp.getWriter();
-//        out.print(reqGraph.generateJSON());
-//        out.flush();
+        PrintWriter out = resp.getWriter();
+        out.print(reqGraph.generateJSON());
+        out.flush();
 
-        dispatcher.forward(req, resp);
+        //dispatcher.forward(req, resp);
     }
 
 }
