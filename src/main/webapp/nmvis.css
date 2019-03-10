@@ -45,9 +45,88 @@ header {
   border: 1px solid lightgray;
   margin-top: 10vh;
   margin-bottom: 10vh;
+  display: none;
+}
+
+/* #progressBarBox {
+  display: block;
+  width: 100%;
+  justify-content: center;
+} */
+
+#myProgress {
+  width: 100%;
+  background-color: grey;
+}
+
+#myProgressBar {
+  width: 10%;
+  height: 30px;
+  background-color: #007bff;
+  text-align: center; /* To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
+  color: white;
+}
+
+#graphDisplayBox {
+  display: none;
+  padding-top: 100px;
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
 }
 
 .carousel i {
   color: black;
   font-size: 3em;
 }
+
+#loaderDiv {
+  min-height: 60vh;
+  display: none;
+}
+
+/* Loader Animation Start */
+#loader {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  margin-top: 10%;
+  margin-left: -60px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 }
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom {
+  from{ bottom:-100px; opacity:0 }
+  to{ bottom:0; opacity:1 }
+}
+/* Loader Animation - End  */

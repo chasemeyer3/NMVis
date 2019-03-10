@@ -98,7 +98,7 @@ public class Graph {
             nodes.put(n2, new Node(n2));
             size++;
         }
-        // adding to both so that eaither can be searched for edge
+        // adding to both so that either can be searched for edge
         edgesJSONArray.put(new JSONObject().put("from", n1).put("to", n2));
         nodes.get(n1).addEdge(nodes.get(n2));
         nodes.get(n2).addEdge(nodes.get(n1));
