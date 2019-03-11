@@ -48,11 +48,10 @@ header {
   display: none;
 }
 
-/* #progressBarBox {
-  display: block;
-  width: 100%;
-  justify-content: center;
-} */
+#progressBarBox {
+  display: none;
+  padding-top: 100px;
+}
 
 #myProgress {
   width: 100%;

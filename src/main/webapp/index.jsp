@@ -152,29 +152,215 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
 
     <div class="container" id="myVisBox"></div>
 
+    <section id="motifs">
+      <div class="container" id="motifCards">
+        <h2>Motifs Found</h2>
+        <div class="row justify-content-center no-gutters">
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card border-secondary m-2">
+              <h5>ID: 234</h5>
+              <div class="mCard" id="motifGraph0"></div>
+              <table id="motifTable">
+                <tr>
+                  <th>Count</th>
+                  <th>Standard Deviation</th>
+                </tr>
+                <tr>
+                  <td id="mCount">20</td>
+                  <td id="mStdDev">0.0007112</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Original]</th>
+                  <th>P-Value</th>
+                </tr>
+                <tr>
+                  <td id="mFreq">0.54281%</td>
+                  <td id="pVal">0.004</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Random]</th>
+                  <th>Z-Score</th>
+                </tr>
+                <tr>
+                  <td id="randFreq">0.23379%</td>
+                  <td id="zScore">4.3452</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card border-secondary m-2">
+              <h5>ID: 234</h5>
+              <div class="mCard" id="motifGraph1"></div>
+              <table id="motifTable">
+                <tr>
+                  <th>Count</th>
+                  <th>Standard Deviation</th>
+                </tr>
+                <tr>
+                  <td id="mCount">20</td>
+                  <td id="mStdDev">0.0007112</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Original]</th>
+                  <th>P-Value</th>
+                </tr>
+                <tr>
+                  <td id="mFreq">0.54281%</td>
+                  <td id="pVal">0.004</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Random]</th>
+                  <th>Z-Score</th>
+                </tr>
+                <tr>
+                  <td id="randFreq">0.23379%</td>
+                  <td id="zScore">4.3452</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card border-secondary m-2">
+              <h5>ID: 234</h5>
+              <div class="mCard" id="motifGraph2"></div>
+              <table id="motifTable">
+                <tr>
+                  <th>Count</th>
+                  <th>Standard Deviation</th>
+                </tr>
+                <tr>
+                  <td id="mCount">20</td>
+                  <td id="mStdDev">0.0007112</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Original]</th>
+                  <th>P-Value</th>
+                </tr>
+                <tr>
+                  <td id="mFreq">0.54281%</td>
+                  <td id="pVal">0.004</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Random]</th>
+                  <th>Z-Score</th>
+                </tr>
+                <tr>
+                  <td id="randFreq">0.23379%</td>
+                  <td id="zScore">4.3452</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card border-secondary m-2">
+              <h5>ID: 234</h5>
+              <div class="mCard" id="motifGraph3"></div>
+              <table id="motifTable">
+                <tr>
+                  <th>Count</th>
+                  <th>Standard Deviation</th>
+                </tr>
+                <tr>
+                  <td id="mCount">20</td>
+                  <td id="mStdDev">0.0007112</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Original]</th>
+                  <th>P-Value</th>
+                </tr>
+                <tr>
+                  <td id="mFreq">0.54281%</td>
+                  <td id="pVal">0.004</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Random]</th>
+                  <th>Z-Score</th>
+                </tr>
+                <tr>
+                  <td id="randFreq">0.23379%</td>
+                  <td id="zScore">4.3452</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card  border-secondary m-2">
+              <h5>ID: 234</h5>
+              <div class="mCard" id="motifGraph4"></div>
+              <table id="motifTable">
+                <tr>
+                  <th>Count</th>
+                  <th>Standard Deviation</th>
+                </tr>
+                <tr>
+                  <td id="mCount">20</td>
+                  <td id="mStdDev">0.0007112</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Original]</th>
+                  <th>P-Value</th>
+                </tr>
+                <tr>
+                  <td id="mFreq">0.54281%</td>
+                  <td id="pVal">0.004</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Random]</th>
+                  <th>Z-Score</th>
+                </tr>
+                <tr>
+                  <td id="randFreq">0.23379%</td>
+                  <td id="zScore">4.3452</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card border-secondary m-2">
+              <h5>ID: 234</h5>
+              <div class="mCard" id="motifGraph5"></div>
+              <table id="motifTable">
+                <tr>
+                  <th>Count</th>
+                  <th>Standard Deviation</th>
+                </tr>
+                <tr>
+                  <td id="mCount">20</td>
+                  <td id="mStdDev">0.0007112</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Original]</th>
+                  <th>P-Value</th>
+                </tr>
+                <tr>
+                  <td id="mFreq">0.54281%</td>
+                  <td id="pVal">0.004</td>
+                </tr>
+                <tr>
+                  <th>Frequency [Random]</th>
+                  <th>Z-Score</th>
+                </tr>
+                <tr>
+                  <td id="randFreq">0.23379%</td>
+                  <td id="zScore">4.3452</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="btnPageGroup">
+          <button type="button" class="btn btn-lg btn-primary" id="prevPageBtn"><</button>
+          <button type="button" class="btn btn-lg btn-primary" id="nextPageBtn">></button>
+        </div>
+      </div>
+    </section>
+
+
     <script type="text/javascript">
-      function move() {
-        var elem = document.getElementById("myProgressBar");
-        var width = 10;
-        var id = setInterval(frame, 10);
-        function frame() {
-          if (width >= 100) {
-            clearInterval(id);
-          } else {
-            width++;
-            elem.style.width = width + '%';
-            elem.innerHTML = width * 1 + '%';
-          }
-        }
-      }
-      move();
+
       var jsonData;
 
       // to display the progress bar (if passed true), or not display (if passed false)
       function showProgress(display){
         var progBox = document.getElementById("progressBarBox");
         if (display){
-          progBox.style.display = 'flex';
+          progBox.style.display = 'block';
           // move down to this position on the page
           progBox.scrollIntoView();
         }
@@ -262,27 +448,16 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         };
         //console.log(data);
         var options = {
-          nodes: {
-            shape : 'dot',
-            font : {
-              size : 12
-            }
-          },
-          edges: {
-            width: 0.40,
-            smooth: {
-              type: 'continuous'
-            }
-          },
-          interaction: {
-            tooltipDelay: 200,
-            hideEdgesOnDrag: true
-          }
+          physics: { stabilization: false }
         };
 
         // initialize your network!
         console.log("about to initialize the network");
         var network = new vis.Network(container, data, options);
+        // for large graphs, disable smooth curves
+        if (edges.length > 500) {
+          network.setOptions({edges:{smooth:{type:'continuous'}}});
+        }
         console.log("done initializing network");
         var progBar = document.getElementById('myProgressBar');
         network.on("stabilizationProgress", function(params) {

@@ -152,29 +152,20 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
 
     <div class="container" id="myVisBox"></div>
 
+
+    <div class="container" id="motifCards">
+
+    </div>
+
     <script type="text/javascript">
-      function move() {
-        var elem = document.getElementById("myProgressBar");
-        var width = 10;
-        var id = setInterval(frame, 10);
-        function frame() {
-          if (width >= 100) {
-            clearInterval(id);
-          } else {
-            width++;
-            elem.style.width = width + '%';
-            elem.innerHTML = width * 1 + '%';
-          }
-        }
-      }
-      move();
+
       var jsonData;
 
       // to display the progress bar (if passed true), or not display (if passed false)
       function showProgress(display){
         var progBox = document.getElementById("progressBarBox");
         if (display){
-          progBox.style.display = 'flex';
+          progBox.style.display = 'block';
           // move down to this position on the page
           progBox.scrollIntoView();
         }
@@ -262,27 +253,16 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         };
         //console.log(data);
         var options = {
-          nodes: {
-            shape : 'dot',
-            font : {
-              size : 12
-            }
-          },
-          edges: {
-            width: 0.40,
-            smooth: {
-              type: 'continuous'
-            }
-          },
-          interaction: {
-            tooltipDelay: 200,
-            hideEdgesOnDrag: true
-          }
+          physics: { stabilization: false }
         };
 
         // initialize your network!
         console.log("about to initialize the network");
         var network = new vis.Network(container, data, options);
+        // for large graphs, disable smooth curves
+        if (edged.length > 500) {
+          network.setOptions({edges:{smooth:{type:'continuous'}}});
+        }
         console.log("done initializing network");
         var progBar = document.getElementById('myProgressBar');
         network.on("stabilizationProgress", function(params) {
