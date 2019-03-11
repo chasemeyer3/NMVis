@@ -72,6 +72,10 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         <div class="uploadFile">
           <label for="graphFile">Or, upload a file containing the network data in a valid format:</label>
           <input class="form-control-file" name="graphFile" id="graphFile" type="file" accept=".txt">
+
+          <%-- file upload for nemoCollect for testing purposes --%>
+          <label for="nemoCollectFile">Or, upload a file containing the network data in a valid format:</label>
+          <input class="form-control-file" name="nemoCollectFile" id="nemoCollectFile" type="file" accept=".txt">
         </div>
 
         <br>
@@ -79,7 +83,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         <div class="optionsGroup row">
           <div class="col">
             <label for="motifSize">Select the Motif Size: </label>
-            <select class="form-control" id="motifSize">
+            <select class="form-control" name="motifSize" id="motifSize">
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>

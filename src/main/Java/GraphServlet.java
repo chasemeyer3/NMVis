@@ -16,8 +16,6 @@ import javax.servlet.http.*;
 @MultipartConfig
 public class GraphServlet extends HttpServlet {
 
-    //GraphService graphService = new GraphService(); // not using this as of now
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Graph reqGraph;
@@ -35,6 +33,13 @@ public class GraphServlet extends HttpServlet {
                 reqGraph = new Graph(); // will generate graph with one node that says "ERROR!", should never get here
             }
         }
+        // get the input motif size
+        Integer mSize = Integer.parseInt(req.getParameter("motifSize"));
+        // get the nemoCollect File, this will be required for testing purposes
+        Part nemoFilePart = req.getPart("nemoCollectFile");
+        // TODO - should be checking for null here
+        InputStream nemoFileData = nemoFilePart.getInputStream();
+        GraphService graphService = new GraphService(reqGraph, nemoFileData, mSize); // not using this as of now
 
         resp.setContentType("application/json");
         //req.setAttribute("graphJSON",reqGraph.generateJSON());

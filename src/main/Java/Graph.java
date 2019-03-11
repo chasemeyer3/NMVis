@@ -10,20 +10,26 @@ public class Graph {
     protected class Node {
         private Integer id;
         private ArrayList<Node> edges;
-        private ArrayList<String> motifs; // ids of the motifs that the Node contains
+
         public Node(Integer idIn){
             edges = new ArrayList<Node>();
-            motifs = new ArrayList<String>();
             id = idIn;
         }
         public void addEdge(Node newEdge){
             edges.add(newEdge);
         }
-        public void addMotif(String newMotif){
-            motifs.add(newMotif);
+
+        public boolean hasEdge(Integer id) {
+            for (int i = 0; i < edges.size(); i++){
+                if (edges.get(i).getID() == id){
+                    return true;
+                }
+            }
+            return false;
         }
-        public ArrayList<String> getMotifs(){
-            return motifs;
+
+        public Integer getID(){
+            return id;
         }
         public ArrayList<Node> getEdges(){
             return edges;
@@ -31,9 +37,9 @@ public class Graph {
     }
 
     private int size;  // will be -1 if error occurs
-    private HashMap<Integer, Node> nodes;
-    private JSONArray edgesJSONArray;
-    private JSONArray nodesJSONArray;
+    protected HashMap<Integer, Node> nodes;
+    protected JSONArray edgesJSONArray;
+    protected JSONArray nodesJSONArray;
 
     public Graph(InputStream fileData){
         edgesJSONArray = new JSONArray();
@@ -80,6 +86,7 @@ public class Graph {
     }
 
     public Graph(){
+        // TODO - this should be taken out later, using this for testing purposes
         edgesJSONArray = new JSONArray();
         nodesJSONArray = new JSONArray();
         nodesJSONArray.put(new JSONObject().put("id", 0).put("label", "ERROR!!"));
@@ -101,11 +108,20 @@ public class Graph {
         // adding to both so that either can be searched for edge
         edgesJSONArray.put(new JSONObject().put("from", n1).put("to", n2));
         nodes.get(n1).addEdge(nodes.get(n2));
-        nodes.get(n2).addEdge(nodes.get(n1));
+        //nodes.get(n2).addEdge(nodes.get(n1)); // might want this later but will make it not work for directed graph
     }
 
     public String generateJSON() {
         JSONObject graphRep = new JSONObject().put("nodes", nodesJSONArray).put("edges", edgesJSONArray);
         return graphRep.toString();
+    }
+
+    public boolean hasEdge(Integer n1, Integer n2){
+        if (nodes.containsKey(n1) && nodes.containsKey(n2)){
+            if (nodes.get(n1).hasEdge(n2)){
+                return true;
+            }
+        }
+        return false;
     }
 }
