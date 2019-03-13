@@ -367,7 +367,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
 
       var jsonData;
       var curPage = 0;
-      var index; // index of motif cards, for pages
+      var index = 0; // index of motif cards, for pages
       var graphDisplayed = false;
       var nodes;  // nodes and edges DataSet Obj for network, global for manipulation with motif data
       var edges;
@@ -395,12 +395,12 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         var nodesToFocus = [];
         for (i = 0; i < motifArr.edges.length; i++){
           console.log("changing edge:" + motifArr.edges[i].id);
-          edges.update({id: motifArr.edges[i].id, color: {color: 'green'}});
+          edges.update({id: motifArr.edges[i].id, color: {color: 'red'}});
         }
         for (i = 0; i < motifArr.nodes.length; i++){
           nodesToFocus.push(motifArr.nodes[i].id);
           console.log("changing node color of node :" + motifArr.nodes[i].id);
-          nodes.update({id: motifArr.nodes[i].id, color: 'green'});
+          nodes.update({id: motifArr.nodes[i].id, color: {border: 'red', background: 'yellow'}});
         }
 
         // now zoom the graph to the specific nodes
@@ -454,7 +454,10 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         }
         if (move == -1){
           curPage--;
+          console.log("Inside move == -1, prev index is: " + index + " new index is:");
+
           index -= 6; // starting index
+          console.log(index);
         }
         if (move == 1){
           curPage++;
@@ -475,8 +478,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         }
 
         // 6 cards per page
-        while (index + curIndex < motifs.length  && curIndex < 6){
-          var curMotif = motifs[curIndex];
+        while ((index + curIndex) < motifs.length  && curIndex < 6){
+          console.log("index + curIndex is: " + (index + curIndex));
+
+          var curMotif = motifs[(index + curIndex)];
+          console.log(curMotif);
           var curCardGraphDiv = document.getElementById("motifGraph" + curIndex);
           // since they should all be the same, displaying first subgraph
           generateMotifGraph(curMotif.motifSubgraphs[0].nodes, curMotif.motifSubgraphs[0].edges, curCardGraphDiv);
@@ -636,7 +642,16 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
               color: '#848484',
               inherit: false
             }
-          }
+          }//,
+          // physics: {
+          //   repulsion: {
+          //     centralGravity: 0.15,
+          //     springLength: 200,
+          //     springConstant: 0.05,
+          //     nodeDistance: 200,
+          //     damping: 0.09
+          //   }
+          // }
         };
 
         // initialize your network!
