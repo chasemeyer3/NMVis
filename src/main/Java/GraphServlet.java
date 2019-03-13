@@ -19,6 +19,7 @@ public class GraphServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Graph reqGraph;
+        GraphService graphService;
         String inputText = req.getParameter("graphData");
         if (inputText != null && !inputText.equals("")){
             reqGraph = new Graph(inputText);
@@ -38,19 +39,29 @@ public class GraphServlet extends HttpServlet {
         // get the nemoCollect File, this will be required for testing purposes
         Part nemoFilePart = req.getPart("nemoCollectFile");
         // TODO - should be checking for null here
-        InputStream nemoFileData = nemoFilePart.getInputStream();
-        GraphService graphService = new GraphService(reqGraph, nemoFileData, mSize); // not using this as of now
+
+        if (nemoFilePart != null){
+            InputStream nemoFileData = nemoFilePart.getInputStream();
+            graphService = new GraphService(reqGraph, nemoFileData, mSize);
+        }
+        else {
+            graphService = new GraphService(reqGraph);
+        }
 
         resp.setContentType("application/json");
         //req.setAttribute("graphJSON",reqGraph.generateJSON());
 
         //RequestDispatcher dispatcher = req.getRequestDispatcher("network.jsp");
 
-        // was using these for get but I think i have to use POST since I am using multipart form data
-        PrintWriter out = resp.getWriter();
-        out.print(reqGraph.generateJSON());
-        out.flush();
+        // this is for graph only
+//        PrintWriter out = resp.getWriter();
+//        out.print(reqGraph.generateGraphJSON());
+//        out.flush();
 
+        // for returning JSONObject that contains Graph and Motif data
+        PrintWriter out = resp.getWriter();
+        out.print(graphService.generateJSON());
+        out.flush();
         //dispatcher.forward(req, resp);
     }
 

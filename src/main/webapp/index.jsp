@@ -74,8 +74,8 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
           <input class="form-control-file" name="graphFile" id="graphFile" type="file" accept=".txt">
 
           <%-- file upload for nemoCollect for testing purposes --%>
-          <label for="nemoCollectFile">Or, upload a file containing the network data in a valid format:</label>
-          <input class="form-control-file" name="nemoCollectFile" id="nemoCollectFile" type="file" accept=".txt">
+          <label for="nemoCollectFile">Upload a file containing the nemoCollect data in its valid format:</label>
+          <input class="form-control-file" name="nemoCollectFile" id="nemoCollectFile" type="file" accept=".txt" required>
         </div>
 
         <br>
@@ -141,6 +141,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
     </div>
 
     <div class="container" id="progressBarBox">
+      <h3>Loading Graph...</h3>
       <div id="myProgress">
         <div id="myProgressBar">0%</div>
       </div>
@@ -161,196 +162,202 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         <h2>Motifs Found</h2>
         <div class="row justify-content-center no-gutters">
           <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card border-secondary m-2">
-              <h5>ID: 234</h5>
+            <div class="card border-secondary m-2" id="card0">
+              <h5 id="cardID0">ID: 234</h5>
               <div class="mCard" id="motifGraph0"></div>
-              <table id="motifTable">
+              <table id="motifTable0">
                 <tr>
                   <th>Count</th>
                   <th>Standard Deviation</th>
                 </tr>
                 <tr>
-                  <td id="mCount">20</td>
-                  <td id="mStdDev">0.0007112</td>
+                  <td id="mCount0">20</td>
+                  <td id="mStdDev0">0.0007112</td>
                 </tr>
                 <tr>
                   <th>Frequency [Original]</th>
                   <th>P-Value</th>
                 </tr>
                 <tr>
-                  <td id="mFreq">0.54281%</td>
-                  <td id="pVal">0.004</td>
+                  <td id="mFreq0">0.54281%</td>
+                  <td id="pVal0">0.004</td>
                 </tr>
                 <tr>
                   <th>Frequency [Random]</th>
                   <th>Z-Score</th>
                 </tr>
                 <tr>
-                  <td id="randFreq">0.23379%</td>
-                  <td id="zScore">4.3452</td>
+                  <td id="randFreq0">0.23379%</td>
+                  <td id="zScore0">4.3452</td>
                 </tr>
               </table>
+              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 0);">Show in Graph</button>
             </div>
-            <div class="card border-secondary m-2">
-              <h5>ID: 234</h5>
+            <div class="card border-secondary m-2" id="card1">
+              <h5 id="cardID1">ID: 234</h5>
               <div class="mCard" id="motifGraph1"></div>
-              <table id="motifTable">
+              <table id="motifTable1">
                 <tr>
                   <th>Count</th>
                   <th>Standard Deviation</th>
                 </tr>
                 <tr>
-                  <td id="mCount">20</td>
-                  <td id="mStdDev">0.0007112</td>
+                  <td id="mCount1">20</td>
+                  <td id="mStdDev1">0.0007112</td>
                 </tr>
                 <tr>
                   <th>Frequency [Original]</th>
                   <th>P-Value</th>
                 </tr>
                 <tr>
-                  <td id="mFreq">0.54281%</td>
-                  <td id="pVal">0.004</td>
+                  <td id="mFreq1">0.54281%</td>
+                  <td id="pVal1">0.004</td>
                 </tr>
                 <tr>
                   <th>Frequency [Random]</th>
                   <th>Z-Score</th>
                 </tr>
                 <tr>
-                  <td id="randFreq">0.23379%</td>
-                  <td id="zScore">4.3452</td>
+                  <td id="randFreq1">0.23379%</td>
+                  <td id="zScore1">4.3452</td>
                 </tr>
               </table>
+              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 1);">Show in Graph</button>
             </div>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card border-secondary m-2">
-              <h5>ID: 234</h5>
+            <div class="card border-secondary m-2" id="card2">
+              <h5 id="cardID2">ID: 234</h5>
               <div class="mCard" id="motifGraph2"></div>
-              <table id="motifTable">
+              <table id="motifTable2">
                 <tr>
                   <th>Count</th>
                   <th>Standard Deviation</th>
                 </tr>
                 <tr>
-                  <td id="mCount">20</td>
-                  <td id="mStdDev">0.0007112</td>
+                  <td id="mCount2">20</td>
+                  <td id="mStdDev2">0.0007112</td>
                 </tr>
                 <tr>
                   <th>Frequency [Original]</th>
                   <th>P-Value</th>
                 </tr>
                 <tr>
-                  <td id="mFreq">0.54281%</td>
-                  <td id="pVal">0.004</td>
+                  <td id="mFreq2">0.54281%</td>
+                  <td id="pVal2">0.004</td>
                 </tr>
                 <tr>
                   <th>Frequency [Random]</th>
                   <th>Z-Score</th>
                 </tr>
                 <tr>
-                  <td id="randFreq">0.23379%</td>
-                  <td id="zScore">4.3452</td>
+                  <td id="randFreq2">0.23379%</td>
+                  <td id="zScore2">4.3452</td>
                 </tr>
               </table>
+              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 2);">Show in Graph</button>
             </div>
-            <div class="card border-secondary m-2">
-              <h5>ID: 234</h5>
+            <div class="card border-secondary m-2" id="card3">
+              <h5 id="cardID3">ID: 234</h5>
               <div class="mCard" id="motifGraph3"></div>
-              <table id="motifTable">
+              <table id="motifTable3">
                 <tr>
                   <th>Count</th>
                   <th>Standard Deviation</th>
                 </tr>
                 <tr>
-                  <td id="mCount">20</td>
-                  <td id="mStdDev">0.0007112</td>
+                  <td id="mCount3">20</td>
+                  <td id="mStdDev3">0.0007112</td>
                 </tr>
                 <tr>
                   <th>Frequency [Original]</th>
                   <th>P-Value</th>
                 </tr>
                 <tr>
-                  <td id="mFreq">0.54281%</td>
-                  <td id="pVal">0.004</td>
+                  <td id="mFreq3">0.54281%</td>
+                  <td id="pVal3">0.004</td>
                 </tr>
                 <tr>
                   <th>Frequency [Random]</th>
                   <th>Z-Score</th>
                 </tr>
                 <tr>
-                  <td id="randFreq">0.23379%</td>
-                  <td id="zScore">4.3452</td>
+                  <td id="randFreq3">0.23379%</td>
+                  <td id="zScore3">4.3452</td>
                 </tr>
               </table>
+              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 3);">Show in Graph</button>
             </div>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card  border-secondary m-2">
-              <h5>ID: 234</h5>
+            <div class="card  border-secondary m-2" id="card4">
+              <h5 id="cardID4">ID: 234</h5>
               <div class="mCard" id="motifGraph4"></div>
-              <table id="motifTable">
+              <table id="motifTable4">
                 <tr>
                   <th>Count</th>
                   <th>Standard Deviation</th>
                 </tr>
                 <tr>
-                  <td id="mCount">20</td>
-                  <td id="mStdDev">0.0007112</td>
+                  <td id="mCount4">20</td>
+                  <td id="mStdDev4">0.0007112</td>
                 </tr>
                 <tr>
                   <th>Frequency [Original]</th>
                   <th>P-Value</th>
                 </tr>
                 <tr>
-                  <td id="mFreq">0.54281%</td>
-                  <td id="pVal">0.004</td>
+                  <td id="mFreq4">0.54281%</td>
+                  <td id="pVal4">0.004</td>
                 </tr>
                 <tr>
                   <th>Frequency [Random]</th>
                   <th>Z-Score</th>
                 </tr>
                 <tr>
-                  <td id="randFreq">0.23379%</td>
-                  <td id="zScore">4.3452</td>
+                  <td id="randFreq4">0.23379%</td>
+                  <td id="zScore4">4.3452</td>
                 </tr>
               </table>
+              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 4);">Show in Graph</button>
             </div>
-            <div class="card border-secondary m-2">
-              <h5>ID: 234</h5>
+            <div class="card border-secondary m-2" id="card5">
+              <h5 id="cardID5">ID: 234</h5>
               <div class="mCard" id="motifGraph5"></div>
-              <table id="motifTable">
+              <table id="motifTable5">
                 <tr>
                   <th>Count</th>
                   <th>Standard Deviation</th>
                 </tr>
                 <tr>
-                  <td id="mCount">20</td>
-                  <td id="mStdDev">0.0007112</td>
+                  <td id="mCount5">20</td>
+                  <td id="mStdDev5">0.0007112</td>
                 </tr>
                 <tr>
                   <th>Frequency [Original]</th>
                   <th>P-Value</th>
                 </tr>
                 <tr>
-                  <td id="mFreq">0.54281%</td>
-                  <td id="pVal">0.004</td>
+                  <td id="mFreq5">0.54281%</td>
+                  <td id="pVal5">0.004</td>
                 </tr>
                 <tr>
                   <th>Frequency [Random]</th>
                   <th>Z-Score</th>
                 </tr>
                 <tr>
-                  <td id="randFreq">0.23379%</td>
-                  <td id="zScore">4.3452</td>
+                  <td id="randFreq5">0.23379%</td>
+                  <td id="zScore5">4.3452</td>
                 </tr>
               </table>
+              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 5);">Show in Graph</button>
             </div>
           </div>
         </div>
 
         <div class="btnPageGroup">
-          <button type="button" class="btn btn-lg btn-primary" id="prevPageBtn"><</button>
-          <button type="button" class="btn btn-lg btn-primary" id="nextPageBtn">></button>
+          <button type="button" class="btn btn-lg btn-primary" id="prevPageBtn" onclick="pgBack()" disabled><</button>
+          <button type="button" class="btn btn-lg btn-primary" id="nextPageBtn" onclick="pgFwd()" disabled>></button>
         </div>
       </div>
     </section>
@@ -359,6 +366,175 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
     <script type="text/javascript">
 
       var jsonData;
+      var curPage = 0;
+      var index; // index of motif cards, for pages
+      var graphDisplayed = false;
+      var nodes;  // nodes and edges DataSet Obj for network, global for manipulation with motif data
+      var edges;
+      var curHLCard = -1; // current hightlighted card, -1 if none highlighted. Used to readjust colors
+      var curHLIndex = -1;
+      var network;
+
+      // this function will highlight the motifs in the graph and zoom in on them
+      // curMotifIndex is the index in the motifSubgraphs array that is next to be highlighted
+      function highlightInGraph(cardNum, curMotifIndex){
+        // first display the full network if it is not displayed
+        if (graphDisplayed == false){
+          generateGraph();
+        }
+        // unhighlight nodes/edges currently highlighted
+        if (curHLCard != -1 /*&& curHLIndex != -1*/){ // should both be -1 at same time always
+          unhighlightLast(curHLCard, curHLIndex);
+          // going to assume here that if the above are -1 that the user view is likely on the
+          // motif cards (as they wouldv'e just clicked those buttons) and therefore,
+          // need to move the view to look at the graph. Doing this here
+          document.getElementById("myVisBox").scrollIntoView();
+        }
+        // get the specific motif array
+        var motifArr = jsonData.motifs[index + cardNum].motifSubgraphs[curMotifIndex];
+        var nodesToFocus = [];
+        for (i = 0; i < motifArr.edges.length; i++){
+          console.log("changing edge:" + motifArr.edges[i].id);
+          edges.update({id: motifArr.edges[i].id, color: {color: 'green'}});
+        }
+        for (i = 0; i < motifArr.nodes.length; i++){
+          nodesToFocus.push(motifArr.nodes[i].id);
+          console.log("changing node color of node :" + motifArr.nodes[i].id);
+          nodes.update({id: motifArr.nodes[i].id, color: 'green'});
+        }
+
+        // now zoom the graph to the specific nodes
+        //network.fit({nodes: [nodesToFocus]});
+
+        curHLCard = cardNum;
+        curHLIndex = curMotifIndex;
+      }
+
+      function unhighlightLast(cardNum, lastMotifIndex){
+        // get the specific motif array
+        var motifArr = jsonData.motifs[index + cardNum].motifSubgraphs[lastMotifIndex];
+
+        for (i = 0; i < motifArr.edges.length; i++){
+          edges.update({id: motifArr.edges[i].id, color: {color: '#848484'}});
+        }
+        // change node color back
+        for (i = 0; i < motifArr.nodes.length; i++){
+          nodes.update({id: motifArr.nodes[i].id, color: {border: '#2B7CE9', background: '#D2E5FF'}});
+        }
+
+        curHLCard = -1;
+        curHLIndex = -1;
+      }
+
+      function pgBack() {
+        populateCardsPage(-1);
+        // if any motifs highlighed, unhighlight them first
+        if (curHLCard != -1 && curHLIndex != -1){
+          unhighlight(curHLCard, curHLIndex);
+        }
+      }
+
+      function pgFwd() {
+        populateCardsPage(1);
+        // if any motifs highlighed, unhighlight them first
+        if (curHLCard != -1 && curHLIndex != -1){
+          unhighlight(curHLCard, curHLIndex);
+        }
+      }
+      // will display the cards div and populate it with the motif data recieved
+      // from the JSON response
+      // ASSUMES: nemoCollectFile was provided and submitForm() has been called
+      // to get jsonData
+      // move = -1 will mean moving back a page, move = 1 moving forward a page,
+      // and move = 0 is populating page for first time
+      function populateCardsPage(move) {
+        if (move == 0) {
+          curPage++;
+          index = 0; // starting index
+        }
+        if (move == -1){
+          curPage--;
+          index -= 6; // starting index
+        }
+        if (move == 1){
+          curPage++;
+          index += 6; // starting index
+        }
+        var motifs = jsonData.motifs;
+        var curIndex = 0;
+        // enable/disable prev/next button depending on index
+        if (index >= 6){
+          document.getElementById("prevPageBtn").disabled = false;
+        } else {
+          document.getElementById("prevPageBtn").disabled = true;
+        }
+        if (motifs.length > index + 6) {
+          document.getElementById("nextPageBtn").disabled = false;
+        } else {
+          document.getElementById("nextPageBtn").disabled = true;
+        }
+
+        // 6 cards per page
+        while (index + curIndex < motifs.length  && curIndex < 6){
+          var curMotif = motifs[curIndex];
+          var curCardGraphDiv = document.getElementById("motifGraph" + curIndex);
+          // since they should all be the same, displaying first subgraph
+          generateMotifGraph(curMotif.motifSubgraphs[0].nodes, curMotif.motifSubgraphs[0].edges, curCardGraphDiv);
+          populateMotifCard(curIndex, curMotif);
+          curIndex++;
+        }
+
+        // make any cards that aren't populated with data not displayed
+        for (i = curIndex; i < 6; i++){
+          document.getElementById("card" + i).style.display = 'none';
+        }
+
+      }
+
+      // this function takes the card index and motif JSON data and populates the card
+      // TODO - would be best to template entire card but no time for now
+      function populateMotifCard(i, motif){
+        var curCardGraphDiv = document.getElementById("motifGraph" + i);
+        // since they should all be the same, displaying first subgraph
+        generateMotifGraph(motif.motifSubgraphs[0].nodes, motif.motifSubgraphs[0].edges, curCardGraphDiv);
+        document.getElementById("motifGraph" + i);
+        document.getElementById("cardID" + i).innerHTML = "ID: " + motif.id;
+        document.getElementById("mCount" + i).innerHTML = motif.count;
+        document.getElementById("mStdDev" + i).innerHTML = motif.stdDev;
+        document.getElementById("mFreq" + i).innerHTML = motif.freqOrig;
+        document.getElementById("pVal" + i).innerHTML = motif.pValue;
+        document.getElementById("randFreq" + i).innerHTML = motif.freqRand;
+        document.getElementById("zScore" + i).innerHTML = motif.zScore;
+      }
+
+      // Function will generate vis.js graph for the motif cards
+      function generateMotifGraph(mNodes, mEdges, graphDiv){
+        // make delet label since it can be for multiple subgraphs
+        for (i = 0; i < mNodes.length; i++){
+          mNodes[i].label = "";
+        }
+
+        var nodesMG = new vis.DataSet(mNodes);
+        var edgesMG = new vis.DataSet(mEdges);
+
+        // provide the data in the vis format
+        var data = {
+            nodes: nodesMG,
+            edges: edgesMG
+        };
+
+        var options = {
+          nodes: {
+            color: {
+              //background: 'orange',
+              border: 'black'
+            }
+          }
+        };
+
+        // initialize network
+        var nwkMotifCard = new vis.Network(graphDiv, data, options);
+      }
 
       // to display the progress bar (if passed true), or not display (if passed false)
       function showProgress(display){
@@ -441,8 +617,8 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         showProgress(true);
         console.log("in generate Graph");
         // create an array with nodes
-        var nodes = new vis.DataSet(jsonData.nodes);
-        var edges = new vis.DataSet(jsonData.edges);
+        nodes = new vis.DataSet(jsonData.graph.nodes);
+        edges = new vis.DataSet(jsonData.graph.edges);
         // create a network
         var container = document.getElementById('myVisBox');
         // provide the data in the vis format
@@ -452,21 +628,33 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         };
         //console.log(data);
         var options = {
-          physics: { stabilization: false }
+          nodes : {
+            color: {border: '#2B7CE9', background: '#D2E5FF'}
+          },
+          edges: {
+            color: {
+              color: '#848484',
+              inherit: false
+            }
+          }
         };
 
         // initialize your network!
         console.log("about to initialize the network");
-        var network = new vis.Network(container, data, options);
+        network = new vis.Network(container, data, options);
+
         // for large graphs, disable smooth curves
         if (edges.length > 500) {
           network.setOptions({edges:{smooth:{type:'continuous'}}});
         }
+
         console.log("done initializing network");
         var progBar = document.getElementById('myProgressBar');
+
         network.on("stabilizationProgress", function(params) {
           var widthFactor = params.iterations/params.total;
           //var width = Math.max(minWidth,maxWidth * widthFactor);
+          console.log("in stabilization, width is  :");
           console.log(widthFactor * 100);
           progBar.style.width = widthFactor * 100 + '%';
           progBar.innerHTML = Math.round(widthFactor*100) + '%';
@@ -479,6 +667,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
           // display the graph div
           document.getElementById("myVisBox").style.display = 'block';
           document.getElementById("myVisBox").scrollIntoView();
+          graphDisplayed = true;
         });
 
       }
@@ -498,19 +687,15 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
 
           request.onload = function () {
             jsonData = JSON.parse(this.response);
-            // this is code for checkbox, which is no longer used. Check the if display graph checkbox is clicked
-            // var showGraph = document.getElementById("displayGraphCB");
-            // if (showGraph.checked == true){
-            //   // display the div container
-            //   document.getElementById("myVisBox").style.display = 'block';
-            //   generateGraph(data);
-            // }
+
             showLoading(false);
             console.log("finishedProcessing request!");
             // display the button to ask if user wants to show the graph
             document.getElementById("graphDisplayBox").style.display = 'block';
             // Show the network motifs found
-
+            populateCardsPage(0);
+            var mCardsView = document.getElementById("motifCards");
+            mCardsView.style.display = 'block';
           }
           console.log("Doing request.");
           var formData = new FormData(document.getElementById("dataForm"));
@@ -637,54 +822,6 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
       // }
 
     </script>
-
-    <%-- <script type="text/javascript">
-
-      // create an array with nodes
-      var nodes = new vis.DataSet([
-          {id: 1, label: 'Node 1'},
-          {id: 2, label: 'Node 2'},
-          {id: 3, label: 'Node 3'},
-          {id: 4, label: 'Node 4'},
-          {id: 5, label: 'Node 5'}
-      ]);
-
-      // create an array with edges
-      var edges = new vis.DataSet([
-          {from: 1, to: 3},
-          {from: 1, to: 2},
-          {from: 2, to: 4},
-          {from: 2, to: 5}
-      ]);
-
-      // create a network
-      var container = document.getElementById('myVisBox');
-
-      // provide the data in the vis format
-      var data = {
-          nodes: nodes,
-          edges: edges
-      };
-      //console.log(data);
-      var options = {};
-
-      // initialize your network!
-      var network = new vis.Network(container, data, options);
-    </script> --%>
-
-    <%-- jQuery to add items to the network visualizations to the carousel --%>
-    <%-- <script>
-      $(document).ready(function(){
-        for(var i=0 ; i< m.length ; i++) {
-          $('<div class="item"><img src="'+m[i]+'"><div class="carousel-caption"></div>   </div>').appendTo('.carousel-inner');
-          $('<li data-target="#carousel-example-generic" data-slide-to="'+i+'"></li>').appendTo('.carousel-indicators')
-
-        }
-        $('.item').first().addClass('active');
-        $('.carousel-indicators > li').first().addClass('active');
-        $('#carousel-example-generic').carousel();
-      });
-    </script> --%>
 
     <footer>
       &copy;2019 Chase Meyer

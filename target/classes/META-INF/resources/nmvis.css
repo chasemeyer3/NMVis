@@ -6,6 +6,7 @@ html {
 }
 body {
   justify-content: center;
+  background-color: #fafafa;
 }
 
 header {
@@ -59,7 +60,7 @@ header {
 }
 
 #myProgressBar {
-  width: 10%;
+  width: 0%;
   height: 30px;
   background-color: #007bff;
   text-align: center; /* To center it horizontally (if you want) */
@@ -70,6 +71,7 @@ header {
 #graphDisplayBox {
   display: none;
   padding-top: 100px;
+  padding-bottom: 50px;
 }
 
 /* Add animation to "page content" */
@@ -129,3 +131,51 @@ header {
   to{ bottom:0; opacity:1 }
 }
 /* Loader Animation - End  */
+
+/* Start of Motif Cards Section */
+#motifTable {
+  width: 100%;
+}
+
+#motifCards {
+  display: none;
+}
+
+#motifCards h5, #motifCards h2 {
+  text-align: center;
+}
+
+.mCard {
+  border-color: black;
+  height: 200px;
+  max-height : 200px;
+}
+
+.btnPageGroup {
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 100px;
+}
+
+#prevPageBtn {
+  outline-color: black;
+  float: left;
+  width: 48.5%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+
+#prevPageBtn:disabled,
+#prevPageBtn[disabled], #nextPageBtn:disabled,
+#nextPageBtn[disabled] {
+  opacity: 0;
+}
+
+#nextPageBtn {
+  width: 48.5%;
+  outline-color: black;
+  float: right;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+/*  End of styles for motif section */
