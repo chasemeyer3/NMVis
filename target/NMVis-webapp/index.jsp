@@ -107,32 +107,6 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
 
     </div>
 
-    <%-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="container d-block w-100" id="visBox"></div>
-        </div>
-        <div class="carousel-item">
-          <div class="container d-block w-100" id="visBox"></div>
-        </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="...">
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <i class="fa fa-chevron-left"></i>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <i class="fa fa-chevron-right"></i>
-        <span class="sr-only">Next</span>
-      </a>
-    </div> --%>
 
     <%-- Code for loader and Graph box, which shows if requested by user --%>
     <br>
@@ -155,11 +129,13 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
       *This is not recommended for graphs over 1000 nodes, as they can take a while to render.
     </div>
 
-    <div class="container" id="myVisBox"></div>
-    <div class="container btnPageGroup">
-      <button type="button" class="btn btn-lg btn-primary" id="prevMotifBtn" onclick="" disabled>Previous Motif Instance</button>
-      <button type="button" class="btn btn-lg btn-primary" id="nextMotifBtn" onclick="" disabled>Next Motif Instance</button>
-    </div>
+
+      <div class="container" id="myVisBox"></div>
+      <div class=" container btnPageGroup">
+        <button type="button" class="btn btn-lg btn-primary prevBtn" id="prevMotifInstBtn" onclick="motifInstBack()" disabled>Previous Motif Instance</button>
+        <button type="button" class="btn btn-lg btn-primary nextBtn" id="nextMotifInstBtn" onclick="motifInstFwd()" disabled>Next Motif Instance</button>
+      </div>
+
 
     <section id="motifs">
       <div class="container" id="motifCards">
@@ -195,7 +171,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
                   <td id="zScore0">4.3452</td>
                 </tr>
               </table>
-              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 0);">Show in Graph</button>
+              <button type="button" class="btn btn-primary btn-sm btn-block" id="btnCard" onclick="highlightInGraph(0, 0);">Show in Graph</button>
             </div>
             <div class="card border-secondary m-2" id="card1">
               <h5 id="cardID1">ID: 234</h5>
@@ -226,7 +202,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
                   <td id="zScore1">4.3452</td>
                 </tr>
               </table>
-              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 1);">Show in Graph</button>
+              <button type="button" class="btn btn-primary btn-sm btn-block" id="btnCard" onclick="highlightInGraph(1, 0);">Show in Graph</button>
             </div>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-4">
@@ -259,7 +235,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
                   <td id="zScore2">4.3452</td>
                 </tr>
               </table>
-              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 2);">Show in Graph</button>
+              <button type="button" class="btn btn-primary btn-sm btn-block" id="btnCard" onclick="highlightInGraph(2, 0);">Show in Graph</button>
             </div>
             <div class="card border-secondary m-2" id="card3">
               <h5 id="cardID3">ID: 234</h5>
@@ -290,7 +266,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
                   <td id="zScore3">4.3452</td>
                 </tr>
               </table>
-              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 3);">Show in Graph</button>
+              <button type="button" class="btn btn-primary btn-sm btn-block" id="btnCard" onclick="highlightInGraph(3, 0);">Show in Graph</button>
             </div>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-4">
@@ -323,7 +299,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
                   <td id="zScore4">4.3452</td>
                 </tr>
               </table>
-              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 4);">Show in Graph</button>
+              <button type="button" class="btn btn-primary btn-sm btn-block" id="btnCard" onclick="highlightInGraph(4, 0);">Show in Graph</button>
             </div>
             <div class="card border-secondary m-2" id="card5">
               <h5 id="cardID5">ID: 234</h5>
@@ -354,14 +330,14 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
                   <td id="zScore5">4.3452</td>
                 </tr>
               </table>
-              <button type="button" class="btn btn-primary btn-sm" id="btnCard" onclick="highlightInGraph(0, 5);">Show in Graph</button>
+              <button type="button" class="btn btn-primary btn-sm btn-block" id="btnCard" onclick="highlightInGraph(5, 0);">Show in Graph</button>
             </div>
           </div>
         </div>
 
         <div class="btnPageGroup">
-          <button type="button" class="btn btn-lg btn-primary" id="prevPageBtn" onclick="pgBack()" disabled><</button>
-          <button type="button" class="btn btn-lg btn-primary" id="nextPageBtn" onclick="pgFwd()" disabled>></button>
+          <button type="button" class="btn btn-lg btn-primary prevBtn" id="prevPageBtn" onclick="pgBack()" disabled><</button>
+          <button type="button" class="btn btn-lg btn-primary nextBtn" id="nextPageBtn" onclick="pgFwd()" disabled>></button>
         </div>
       </div>
     </section>
@@ -379,39 +355,99 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
       var curHLIndex = -1;
       var network;
 
+      // will change to the highlighted subgraph instance to the next one for the motif
+      function motifInstFwd(){
+        // unhighlight the last one
+        // if (curHLCard != -1 && curHLIndex != -1){ // should never be == -1 since the button relies
+        //   unhighlight(curHLCard, curHLIndex);
+        // }
+        // else {
+        //   console.log("ERROR: Should not be getting curHLCard and curHLIndex == -1");
+        // }
+        // highlight the next motif instance
+        highlightInGraph(curHLCard, curHLIndex + 1);
+
+      }
+
+      function motifInstBack() {
+        // unhighlight the last one
+        // if (curHLCard != -1 && curHLIndex != -1){ // should never be == -1 since the button relies
+        //   unhighlight(curHLCard, curHLIndex);
+        // }
+        // else {
+        //   console.log("ERROR: Should not be getting curHLCard and curHLIndex == -1");
+        // }
+        // highlight the next motif instance
+        highlightInGraph(curHLCard, curHLIndex - 1);
+
+      }
+
       // this function will highlight the motifs in the graph and zoom in on them
       // curMotifIndex is the index in the motifSubgraphs array that is next to be highlighted
       function highlightInGraph(cardNum, curMotifIndex){
         // first display the full network if it is not displayed
+        console.log("Inside Highlight. next curMotifIndex is: ", curMotifIndex);
         if (graphDisplayed == false){
           generateGraph();
         }
         // unhighlight nodes/edges currently highlighted
-        if (curHLCard != -1 /*&& curHLIndex != -1*/){ // should both be -1 at same time always
+        if (curHLCard != -1 && curHLIndex != -1){ // should both be -1 at same time always
           unhighlightLast(curHLCard, curHLIndex);
-          // going to assume here that if the above are -1 that the user view is likely on the
-          // motif cards (as they wouldv'e just clicked those buttons) and therefore,
-          // need to move the view to look at the graph. Doing this here
+        }
+
+        // scroll into view if clicking "Show in graph" button
+        if (curMotifIndex == 0){
           document.getElementById("myVisBox").scrollIntoView();
         }
-        // get the specific motif array
-        var motifArr = jsonData.motifs[index + cardNum].motifSubgraphs[curMotifIndex];
-        var nodesToFocus = [];
-        for (i = 0; i < motifArr.edges.length; i++){
-          console.log("changing edge:" + motifArr.edges[i].id);
-          edges.update({id: motifArr.edges[i].id, color: {color: 'red'}});
+
+        // if the next motif instance in motifSubgraphs is the last, the next button shouldn't be displayed
+        if (curMotifIndex == jsonData.motifs[index + cardNum].motifSubgraphs.length - 1){
+          document.getElementById("nextMotifInstBtn").disabled = true;
+        } else {
+          document.getElementById("nextMotifInstBtn").disabled = false;
         }
-        for (i = 0; i < motifArr.nodes.length; i++){
-          nodesToFocus.push(motifArr.nodes[i].id);
-          console.log("changing node color of node :" + motifArr.nodes[i].id);
-          nodes.update({id: motifArr.nodes[i].id, color: {border: 'red', background: 'yellow'}});
+        // same for the previous button if this motif is the first
+        if (curMotifIndex == 0){
+          document.getElementById("prevMotifInstBtn").disabled = true;
+        } else {
+          document.getElementById("prevMotifInstBtn").disabled = false;
+        }
+
+        // make sure we are not at end of array motifSubgraphs array
+        if (curMotifIndex < jsonData.motifs[index + cardNum].motifSubgraphs.length){
+          // get the specific motif array
+          var motifArr = jsonData.motifs[index + cardNum].motifSubgraphs[curMotifIndex];
+          var nodesToFocus = [];
+          // highlight edges
+          for (i = 0; i < motifArr.edges.length; i++){
+            console.log("changing edge:" + motifArr.edges[i].id);
+            edges.update({id: motifArr.edges[i].id, color: {color: 'red', highlight: 'red', hover: 'red'}});
+          }
+          // highlight nodes
+          for (i = 0; i < motifArr.nodes.length; i++){
+            nodesToFocus.push(motifArr.nodes[i].id);
+            console.log("changing node color of node :" + motifArr.nodes[i].id);
+            nodes.update({id: motifArr.nodes[i].id, color: {
+              border: 'red',
+              background: 'yellow',
+              highlight: {
+                border: 'red',
+                background: 'yellow'
+              },
+              hover: {
+                border: 'red',
+                background: 'yellow'
+              }}});
+          }
+
+          curHLCard = cardNum;
+          curHLIndex = curMotifIndex;
         }
 
         // now zoom the graph to the specific nodes
         //network.fit({nodes: [nodesToFocus]});
 
-        curHLCard = cardNum;
-        curHLIndex = curMotifIndex;
+
       }
 
       function unhighlightLast(cardNum, lastMotifIndex){
@@ -419,11 +455,21 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         var motifArr = jsonData.motifs[index + cardNum].motifSubgraphs[lastMotifIndex];
 
         for (i = 0; i < motifArr.edges.length; i++){
-          edges.update({id: motifArr.edges[i].id, color: {color: '#848484'}});
+          edges.update({id: motifArr.edges[i].id, color: {color: '#848484', highlight:'#848484', hover: '#848484'}});
         }
         // change node color back
         for (i = 0; i < motifArr.nodes.length; i++){
-          nodes.update({id: motifArr.nodes[i].id, color: {border: '#2B7CE9', background: '#D2E5FF'}});
+          nodes.update({id: motifArr.nodes[i].id, color: {
+            border: '#2B7CE9',
+            background: '#97C2FC',
+            highlight: {
+              border: '#2B7CE9',
+              background: '#D2E5FF'
+            },
+            hover: {
+              border: '#2B7CE9',
+              background: '#D2E5FF'
+            }}});
         }
 
         curHLCard = -1;
@@ -434,7 +480,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         populateCardsPage(-1);
         // if any motifs highlighed, unhighlight them first
         if (curHLCard != -1 && curHLIndex != -1){
-          unhighlight(curHLCard, curHLIndex);
+          unhighlightLast(curHLCard, curHLIndex);
         }
       }
 
@@ -442,7 +488,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         populateCardsPage(1);
         // if any motifs highlighed, unhighlight them first
         if (curHLCard != -1 && curHLIndex != -1){
-          unhighlight(curHLCard, curHLIndex);
+          unhighlightLast(curHLCard, curHLIndex);
         }
       }
       // will display the cards div and populate it with the motif data recieved

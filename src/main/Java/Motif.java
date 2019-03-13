@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.text.DecimalFormat;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -57,6 +58,8 @@ public class Motif {
 
     public JSONObject generateMotifJSONObj() {
         Random rand = new Random();
+        DecimalFormat decFormat4 = new DecimalFormat("#####.####");
+        DecimalFormat decFormat6 = new DecimalFormat("#####.######");
         JSONObject motifJSON = new JSONObject();
         JSONArray mSubgraphs = new JSONArray();
         // add all subgraphs to JSONArray
@@ -66,11 +69,12 @@ public class Motif {
         motifJSON.put("id", id);
         motifJSON.put("count", count);
         // for now, just going to use 0 for all other variables untill I can get subGraphProfile working
-        motifJSON.put("stdDev", rand.nextDouble());
-        motifJSON.put("pValue", rand.nextDouble());
-        motifJSON.put("zScore", rand.nextDouble() + 2.1 + rand.nextDouble());
-        motifJSON.put("freqRand", rand.nextDouble());
-        motifJSON.put("freqOrig", rand.nextDouble());
+
+        motifJSON.put("stdDev", decFormat4.format(rand.nextDouble()));
+        motifJSON.put("pValue", decFormat4.format(rand.nextDouble()));
+        motifJSON.put("zScore", decFormat4.format(rand.nextDouble() + 2.1 + rand.nextDouble()));
+        motifJSON.put("freqRand", decFormat6.format(rand.nextDouble()));
+        motifJSON.put("freqOrig", decFormat6.format(rand.nextDouble()));
         motifJSON.put("motifSubgraphs", mSubgraphs);
         return motifJSON;
     }
