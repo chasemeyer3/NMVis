@@ -156,6 +156,10 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
     </div>
 
     <div class="container" id="myVisBox"></div>
+    <div class="container btnPageGroup">
+      <button type="button" class="btn btn-lg btn-primary" id="prevMotifBtn" onclick="" disabled>Previous Motif Instance</button>
+      <button type="button" class="btn btn-lg btn-primary" id="nextMotifBtn" onclick="" disabled>Next Motif Instance</button>
+    </div>
 
     <section id="motifs">
       <div class="container" id="motifCards">
@@ -481,7 +485,8 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         while ((index + curIndex) < motifs.length  && curIndex < 6){
           console.log("index + curIndex is: " + (index + curIndex));
 
-          var curMotif = motifs[(index + curIndex)];
+          var curMotif = motifs[index + curIndex];
+          console.log("page move is: " + move + " and motifs length is: " + motifs.length)
           console.log(curMotif);
           var curCardGraphDiv = document.getElementById("motifGraph" + curIndex);
           // since they should all be the same, displaying first subgraph
@@ -491,7 +496,9 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         }
 
         // make any cards that aren't populated with data not displayed
+        console.log("In not display card section");
         for (i = curIndex; i < 6; i++){
+          console.log("i is: " + i);
           document.getElementById("card" + i).style.display = 'none';
         }
 
@@ -500,6 +507,8 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
       // this function takes the card index and motif JSON data and populates the card
       // TODO - would be best to template entire card but no time for now
       function populateMotifCard(i, motif){
+        // make sure the card is displayed (could've been turned off previously)
+        document.getElementById("card" + i).style.display = 'block';
         var curCardGraphDiv = document.getElementById("motifGraph" + i);
         // since they should all be the same, displaying first subgraph
         generateMotifGraph(motif.motifSubgraphs[0].nodes, motif.motifSubgraphs[0].edges, curCardGraphDiv);
