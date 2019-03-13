@@ -62,7 +62,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
 
     <div class="container">
 
-      <h3>To get started, simply paste the motif and network data from your graph into the box below and click "Show Network Motifs".</h3>
+      <h3>To get started, simply input motif and network data for your graph and click "Show Network Motifs".</h3>
       <h4>The format of supplied data can be found <a href="#">here</a>.</h4>
       <h4>If you are new to the site and want to learn more click <a href="#">here</a>.</h4>
 
@@ -357,27 +357,12 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
 
       // will change to the highlighted subgraph instance to the next one for the motif
       function motifInstFwd(){
-        // unhighlight the last one
-        // if (curHLCard != -1 && curHLIndex != -1){ // should never be == -1 since the button relies
-        //   unhighlight(curHLCard, curHLIndex);
-        // }
-        // else {
-        //   console.log("ERROR: Should not be getting curHLCard and curHLIndex == -1");
-        // }
-        // highlight the next motif instance
+        // highlight the next motif instance, will unhighlight in this
         highlightInGraph(curHLCard, curHLIndex + 1);
-
       }
 
       function motifInstBack() {
-        // unhighlight the last one
-        // if (curHLCard != -1 && curHLIndex != -1){ // should never be == -1 since the button relies
-        //   unhighlight(curHLCard, curHLIndex);
-        // }
-        // else {
-        //   console.log("ERROR: Should not be getting curHLCard and curHLIndex == -1");
-        // }
-        // highlight the next motif instance
+        // highlight the next motif instance, will unhighlight in this function
         highlightInGraph(curHLCard, curHLIndex - 1);
 
       }
@@ -451,6 +436,9 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
       }
 
       function unhighlightLast(cardNum, lastMotifIndex){
+        if (cardNum == -1 || lastMotifIndex == -1){
+          return;
+        }
         // get the specific motif array
         var motifArr = jsonData.motifs[index + cardNum].motifSubgraphs[lastMotifIndex];
 
@@ -477,19 +465,19 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
       }
 
       function pgBack() {
-        populateCardsPage(-1);
         // if any motifs highlighed, unhighlight them first
         if (curHLCard != -1 && curHLIndex != -1){
           unhighlightLast(curHLCard, curHLIndex);
         }
+        populateCardsPage(-1);
       }
 
       function pgFwd() {
-        populateCardsPage(1);
         // if any motifs highlighed, unhighlight them first
         if (curHLCard != -1 && curHLIndex != -1){
           unhighlightLast(curHLCard, curHLIndex);
         }
+        populateCardsPage(1);
       }
       // will display the cards div and populate it with the motif data recieved
       // from the JSON response
@@ -697,16 +685,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
               color: '#848484',
               inherit: false
             }
-          }//,
-          // physics: {
-          //   repulsion: {
-          //     centralGravity: 0.15,
-          //     springLength: 200,
-          //     springConstant: 0.05,
-          //     nodeDistance: 200,
-          //     damping: 0.09
-          //   }
-          // }
+          }
         };
 
         // initialize your network!
