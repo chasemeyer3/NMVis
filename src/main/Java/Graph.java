@@ -48,6 +48,9 @@ public class Graph {
     protected JSONArray nodesJSONArray;
 
     public Graph(InputStream fileData){
+        // TESTING: calling exe from here
+        //Runtime runtimeProcess = Runtime.getRuntime().exec("D:\\\\test\\NemoLib.exe", null, new File("c:\\program files\\test\\"));
+        //int processComplete = runtimeProcess.waitFor();
         Integer edgeID = 0; // unique id assigned to each edge (for color changing in vis.js), will be same as motif edge
         edgesJSONArray = new JSONArray();
         nodesJSONArray = new JSONArray();

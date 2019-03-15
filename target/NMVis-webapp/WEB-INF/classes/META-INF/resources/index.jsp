@@ -371,7 +371,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
       // curMotifIndex is the index in the motifSubgraphs array that is next to be highlighted
       function highlightInGraph(cardNum, curMotifIndex){
         // first display the full network if it is not displayed
-        console.log("Inside Highlight. next curMotifIndex is: ", curMotifIndex);
+        //console.log("Inside Highlight. next curMotifIndex is: ", curMotifIndex);
         if (graphDisplayed == false){
           generateGraph();
         }
@@ -403,25 +403,26 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
           // get the specific motif array
           var motifArr = jsonData.motifs[index + cardNum].motifSubgraphs[curMotifIndex];
           var nodesToFocus = [];
+          
           // highlight edges
           for (i = 0; i < motifArr.edges.length; i++){
-            console.log("changing edge:" + motifArr.edges[i].id);
-            edges.update({id: motifArr.edges[i].id, color: {color: 'red', highlight: 'red', hover: 'red'}});
+            //console.log("changing edge:" + motifArr.edges[i].id);
+            edges.update({id: motifArr.edges[i].id, color: {color: 'rgb(255,69,0)', highlight: 'rgb(255,69,0)', hover: 'rgb(255,69,0)'}});
           }
           // highlight nodes
           for (i = 0; i < motifArr.nodes.length; i++){
             nodesToFocus.push(motifArr.nodes[i].id);
-            console.log("changing node color of node :" + motifArr.nodes[i].id);
+            //console.log("changing node color of node :" + motifArr.nodes[i].id);
             nodes.update({id: motifArr.nodes[i].id, color: {
-              border: 'red',
-              background: 'yellow',
+              border: 'rgb(255,69,0)',
+              background: 'rgb(255,255,0)',
               highlight: {
-                border: 'red',
-                background: 'yellow'
+                border: 'rgb(255,69,0)',
+                background: 'rgb(255,255,0)'
               },
               hover: {
-                border: 'red',
-                background: 'yellow'
+                border: 'rgb(255,69,0)',
+                background: 'rgb(255,255,0)'
               }}});
           }
 
@@ -430,7 +431,10 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         }
 
         // now zoom the graph to the specific nodes
-        //network.fit({nodes: [nodesToFocus]});
+        var op = {
+          nodes: nodesToFocus
+        };
+        network.fit(op);
 
 
       }
@@ -443,20 +447,20 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         var motifArr = jsonData.motifs[index + cardNum].motifSubgraphs[lastMotifIndex];
 
         for (i = 0; i < motifArr.edges.length; i++){
-          edges.update({id: motifArr.edges[i].id, color: {color: '#848484', highlight:'#848484', hover: '#848484'}});
+          edges.update({id: motifArr.edges[i].id, color: {color: 'rgb(132,132,132)', highlight:'rgb(132,132,132)', hover: 'rgb(132,132,132)'}});
         }
         // change node color back
         for (i = 0; i < motifArr.nodes.length; i++){
           nodes.update({id: motifArr.nodes[i].id, color: {
-            border: '#2B7CE9',
-            background: '#97C2FC',
+            border: 'rgb(43,124,233)',
+            background: 'rgb(151,194,252)',
             highlight: {
-              border: '#2B7CE9',
-              background: '#D2E5FF'
+              border: 'rgb(43,124,233)',
+              background: 'rgb(151,194,252)'
             },
             hover: {
-              border: '#2B7CE9',
-              background: '#D2E5FF'
+              border: 'rgb(43,124,233)',
+              background: 'rgb(151,194,252)'
             }}});
         }
 
@@ -492,10 +496,10 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         }
         if (move == -1){
           curPage--;
-          console.log("Inside move == -1, prev index is: " + index + " new index is:");
+          //console.log("Inside move == -1, prev index is: " + index + " new index is:");
 
           index -= 6; // starting index
-          console.log(index);
+          //console.log(index);
         }
         if (move == 1){
           curPage++;
@@ -517,11 +521,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
 
         // 6 cards per page
         while ((index + curIndex) < motifs.length  && curIndex < 6){
-          console.log("index + curIndex is: " + (index + curIndex));
+          //console.log("index + curIndex is: " + (index + curIndex));
 
           var curMotif = motifs[index + curIndex];
-          console.log("page move is: " + move + " and motifs length is: " + motifs.length)
-          console.log(curMotif);
+          //console.log("page move is: " + move + " and motifs length is: " + motifs.length)
+          //console.log(curMotif);
           var curCardGraphDiv = document.getElementById("motifGraph" + curIndex);
           // since they should all be the same, displaying first subgraph
           generateMotifGraph(curMotif.motifSubgraphs[0].nodes, curMotif.motifSubgraphs[0].edges, curCardGraphDiv);
@@ -530,9 +534,9 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         }
 
         // make any cards that aren't populated with data not displayed
-        console.log("In not display card section");
+        //console.log("In not display card section");
         for (i = curIndex; i < 6; i++){
-          console.log("i is: " + i);
+          //console.log("i is: " + i);
           document.getElementById("card" + i).style.display = 'none';
         }
 
@@ -608,7 +612,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         } else {
           loadIndicator.style.display = "none";
         }
-        console.log("finished showLoading " + display);
+        //console.log("finished showLoading " + display);
       }
 
       function checkNumRandGraphs() {
@@ -664,7 +668,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
 
         // show loading screen
         showProgress(true);
-        console.log("in generate Graph");
+        //console.log("in generate Graph");
         // create an array with nodes
         nodes = new vis.DataSet(jsonData.graph.nodes);
         edges = new vis.DataSet(jsonData.graph.edges);
@@ -675,21 +679,17 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
             nodes: nodes,
             edges: edges
         };
-        //console.log(data);
+        ////console.log(data);
         var options = {
-          nodes : {
-            color: {border: '#2B7CE9', background: '#D2E5FF'}
-          },
           edges: {
             color: {
-              color: '#848484',
               inherit: false
             }
           }
         };
 
         // initialize your network!
-        console.log("about to initialize the network");
+        //console.log("about to initialize the network");
         network = new vis.Network(container, data, options);
 
         // for large graphs, disable smooth curves
@@ -697,14 +697,14 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
           network.setOptions({edges:{smooth:{type:'continuous'}}});
         }
 
-        console.log("done initializing network");
+        //console.log("done initializing network");
         var progBar = document.getElementById('myProgressBar');
 
         network.on("stabilizationProgress", function(params) {
           var widthFactor = params.iterations/params.total;
           //var width = Math.max(minWidth,maxWidth * widthFactor);
-          console.log("in stabilization, width is  :");
-          console.log(widthFactor * 100);
+          //console.log("in stabilization, width is  :");
+          //console.log(widthFactor * 100);
           progBar.style.width = widthFactor * 100 + '%';
           progBar.innerHTML = Math.round(widthFactor*100) + '%';
         });
@@ -729,7 +729,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
           formBtn.disabled = "disabled";
 
           showLoading(true);
-          console.log("Getting to showLoading!");
+          //console.log("Getting to showLoading!");
           var request = new XMLHttpRequest();
           // Open a new connection, using the GET request on the URL endpoint
           request.open('POST', 'https://nmvis.azurewebsites.net/graph', true);
@@ -738,7 +738,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
             jsonData = JSON.parse(this.response);
 
             showLoading(false);
-            console.log("finishedProcessing request!");
+            //console.log("finishedProcessing request!");
             // display the button to ask if user wants to show the graph
             document.getElementById("graphDisplayBox").style.display = 'block';
             // Show the network motifs found
@@ -746,7 +746,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
             var mCardsView = document.getElementById("motifCards");
             mCardsView.style.display = 'block';
           }
-          console.log("Doing request.");
+          //console.log("Doing request.");
           var formData = new FormData(document.getElementById("dataForm"));
           // send the request
           request.send(formData);
