@@ -1,5 +1,5 @@
-Graph$Node.class
 Motif.class
-Graph.class
 GraphServlet.class
 GraphService.class
+Graph$Node.class
+Graph.class

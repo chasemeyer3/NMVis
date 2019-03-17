@@ -38,8 +38,6 @@ public class GraphServlet extends HttpServlet {
         Integer mSize = Integer.parseInt(req.getParameter("motifSize"));
         // get the nemoCollect File, this will be required for testing purposes
         Part nemoFilePart = req.getPart("nemoCollectFile");
-        // TODO - should be checking for null here
-
         if (nemoFilePart != null){
             InputStream nemoFileData = nemoFilePart.getInputStream();
             graphService = new GraphService(reqGraph, nemoFileData, mSize);
@@ -53,7 +51,7 @@ public class GraphServlet extends HttpServlet {
 
         //RequestDispatcher dispatcher = req.getRequestDispatcher("network.jsp");
 
-        // this is for graph only
+        // this is for graph only - could be made into own API in the future
 //        PrintWriter out = resp.getWriter();
 //        out.print(reqGraph.generateGraphJSON());
 //        out.flush();
@@ -62,7 +60,7 @@ public class GraphServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.print(graphService.generateJSON());
         out.flush();
-        //dispatcher.forward(req, resp);
+
     }
 
 }

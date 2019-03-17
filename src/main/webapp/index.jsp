@@ -63,8 +63,8 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
     <div class="container">
 
       <h3>To get started, simply input motif and network data for your graph and click "Show Network Motifs".</h3>
-      <h4>The format of supplied data can be found <a href="#">here</a>.</h4>
-      <h4>If you are new to the site and want to learn more click <a href="#">here</a>.</h4>
+      <h4>An example network data text file can be downloaded <a href="https://nmvis.azurewebsites.net/exampleGraph.txt">here</a>. An example nemoCollect text file can be downloaded <a href="https://nmvis.azurewebsites.net/nemoCollect.txt">here</a>.</h4>
+      <h4>If you are new to the site and want to learn more click <a href="https://nmvis.azurewebsites.net/sitehelp.pdf">here</a>. This includes information about input file format.</h4>
 
       <form id="dataForm" action="https://nmvis.azurewebsites.net/graph" method="post" enctype="multipart/form-data" roll="form">
         <textarea name="graphData" class="textInput" id="graphData" rows="8" cols="80" value="" placeholder="Paste network data here"></textarea>
@@ -75,7 +75,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
 
           <%-- file upload for nemoCollect for testing purposes --%>
           <label for="nemoCollectFile">Upload a file containing the nemoCollect data in its valid format:</label>
-          <input class="form-control-file" name="nemoCollectFile" id="nemoCollectFile" type="file" accept=".txt" required>
+          <input class="form-control-file" name="nemoCollectFile" id="nemoCollectFile" type="file" accept=".txt">
         </div>
 
         <br>
@@ -122,7 +122,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
     </div>
 
     <div class="container animate-bottom" id="graphDisplayBox">
-      <label for="showGraphBtn">Network Motifs Generated! Would you like to display the entire graph?</label>
+      <label for="showGraphBtn">Finished processing, would you like to display the entire graph?</label>
       <br>
       <button type="button" class="btn btn-primary btn-lg btn-block" id="showGraphBtn" onclick="generateGraph()">Yes! Display the Graph</button>
       <br>
@@ -403,7 +403,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
           // get the specific motif array
           var motifArr = jsonData.motifs[index + cardNum].motifSubgraphs[curMotifIndex];
           var nodesToFocus = [];
-          
+
           // highlight edges
           for (i = 0; i < motifArr.edges.length; i++){
             //console.log("changing edge:" + motifArr.edges[i].id);

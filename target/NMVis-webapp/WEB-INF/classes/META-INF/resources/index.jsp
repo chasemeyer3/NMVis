@@ -75,7 +75,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
 
           <%-- file upload for nemoCollect for testing purposes --%>
           <label for="nemoCollectFile">Upload a file containing the nemoCollect data in its valid format:</label>
-          <input class="form-control-file" name="nemoCollectFile" id="nemoCollectFile" type="file" accept=".txt" required>
+          <input class="form-control-file" name="nemoCollectFile" id="nemoCollectFile" type="file" accept=".txt">
         </div>
 
         <br>
@@ -122,7 +122,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
     </div>
 
     <div class="container animate-bottom" id="graphDisplayBox">
-      <label for="showGraphBtn">Network Motifs Generated! Would you like to display the entire graph?</label>
+      <label for="showGraphBtn">Finished processing, would you like to display the entire graph?</label>
       <br>
       <button type="button" class="btn btn-primary btn-lg btn-block" id="showGraphBtn" onclick="generateGraph()">Yes! Display the Graph</button>
       <br>
@@ -403,7 +403,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
           // get the specific motif array
           var motifArr = jsonData.motifs[index + cardNum].motifSubgraphs[curMotifIndex];
           var nodesToFocus = [];
-          
+
           // highlight edges
           for (i = 0; i < motifArr.edges.length; i++){
             //console.log("changing edge:" + motifArr.edges[i].id);

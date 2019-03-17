@@ -70,11 +70,11 @@ public class Motif {
         motifJSON.put("count", count);
         // for now, just going to use 0 for all other variables untill I can get subGraphProfile working
 
-        motifJSON.put("stdDev", decFormat4.format(rand.nextDouble()));
-        motifJSON.put("pValue", decFormat4.format(rand.nextDouble()));
-        motifJSON.put("zScore", decFormat4.format(rand.nextDouble() + 2.1 + rand.nextDouble()));
-        motifJSON.put("freqRand", decFormat6.format(rand.nextDouble()));
-        motifJSON.put("freqOrig", decFormat6.format(rand.nextDouble()));
+        motifJSON.put("stdDev", "N/A");//decFormat4.format(rand.nextDouble()));
+        motifJSON.put("pValue", "N/A");//decFormat4.format(rand.nextDouble()));
+        motifJSON.put("zScore", "N/A");//decFormat4.format(rand.nextDouble() + 2.1 + rand.nextDouble()));
+        motifJSON.put("freqRand", "N/A");//decFormat6.format(rand.nextDouble()));
+        motifJSON.put("freqOrig", "N/A");//decFormat6.format(rand.nextDouble()));
         motifJSON.put("motifSubgraphs", mSubgraphs);
         return motifJSON;
     }

@@ -24,12 +24,14 @@ public class GraphService {
             String line = null;
             Motif curMotif;
             while((line = strReader.readLine()) != null) {
+                line = line.trim();
                 // three kinds of line possible (starts with "ID:", contains '\n' only, or contains comma and space separated nodes)
                 if (line.length() == 0 || line.charAt(0) == '\n'){
                     continue;
                 }
                 else if (line.substring(0, 3).equals("ID:")){
-                    line = line.replaceAll("\\s","");// remove all spaces
+
+                    line = line.replaceAll(" ","");// remove all spaces
                     // check if motif exists
                     Integer id = Integer.parseInt(line.substring(3));
                     if (motifs.containsKey(id)){
@@ -41,7 +43,11 @@ public class GraphService {
                         motifs.put(id, curMotif);
                     }
                     if ((line = strReader.readLine()) != null) {
-                        line = line.replaceAll(",","");// remove all commas
+                        line = line.trim();
+                        // Make it such that the file can be comma separated, tab separated or space separated
+                        line = line.replaceAll("\t", " "); // replace all tabs with spaces
+                        line = line.replaceAll(",", " "); // replace all commas with spaces
+                        line = line.replaceAll(" +", " "); // replace multi space separated data with single spaces
                         curMotif.newInstance(line, g);
                     }
                 }

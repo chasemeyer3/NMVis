@@ -46,15 +46,64 @@ public class Graph {
     protected HashMap<Integer, Node> nodes;
     protected JSONArray edgesJSONArray;
     protected JSONArray nodesJSONArray;
+    protected String nemoTest;
 
     public Graph(InputStream fileData){
-        // TESTING: calling exe from here
-        //Runtime runtimeProcess = Runtime.getRuntime().exec("D:\\\\test\\NemoLib.exe", null, new File("c:\\program files\\test\\"));
-        //int processComplete = runtimeProcess.waitFor();
         Integer edgeID = 0; // unique id assigned to each edge (for color changing in vis.js), will be same as motif edge
         edgesJSONArray = new JSONArray();
         nodesJSONArray = new JSONArray();
         nodes = new HashMap<Integer, Node>();
+
+        // TESTING NemoLib Integration: Future Work
+        // try {
+//            StringBuilder sb =  new StringBuilder();
+//            ProcessBuilder builder = new ProcessBuilder("D:\\home\\site\\wwwroot\\webapps\\ROOT\\");
+//            Process pro = builder.start();
+//
+//            BufferedReader is = new BufferedReader(new InputStreamReader(pro.getInputStream()));
+//            // kill the process
+//            pro.waitFor();
+//
+//            // checking the exit value of subprocess
+//            sb.append("exit value: " + pro.exitValue());
+//
+//            String[] nargs = {"exampleGraph.txt", "1"};
+//            //Process runtimeProcess = Runtime.getRuntime().exec("D:\\home\\site\\wwwroot\\webapps\\ROOT\\", null, new File("D:\\home\\site\\wwwroot\\webapps\\ROOT\\"));
+//
+//            // to catch command line output
+//            //BufferedReader is = new BufferedReader(new InputStreamReader(runtimeProcess.getInputStream()));
+//
+//            //BufferedReader stdError = new BufferedReader(new InputStreamReader(runtimeProcess.getErrorStream()));
+//
+//            String line;
+//
+//            //int exitVal = runtimeProcess.waitFor();
+//            //sb.append("wait val: " + exitVal);
+//            //sb.append("exitVal: " + runtimeProcess.exitValue());
+//
+//            // reading the output
+//            while ((line = is.readLine()) != null) {
+//                sb.append(line);
+//                sb.append("getting in while");
+//            }
+////            while ((line = stdError.readLine()) != null) {
+////                sb.append(line);
+////            }
+//
+//            nemoTest = sb.toString();
+//
+//
+//        } catch (InterruptedException e) {
+//            nemoTest = "InterruptedException";
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            StringWriter errors = new StringWriter();
+//            e.printStackTrace(new PrintWriter(errors));
+//            nemoTest = errors.toString();
+//            //e.printStackTrace();
+//        }
+
+
         try (BufferedReader strReader = new BufferedReader(new InputStreamReader(fileData))){
             String line = null;
             while((line = strReader.readLine()) != null) {
@@ -62,7 +111,11 @@ public class Graph {
                     continue;
                 }
                 line = line.trim();
-                String[] splitLine = line.split("\t");
+                // Make it such that the file can be comma separated, tab separated or space separated
+                line = line.replaceAll("\t", " "); // replace all tabs with spaces
+                line = line.replaceAll(",", " "); // replace all commas with spaces
+                line = line.replaceAll(" +", " "); // replace multi space separated data with single spaces
+                String[] splitLine = line.split(" ");
                 if (splitLine.length == 2){
                     Integer n1 = new Integer(splitLine[0]);
                     Integer n2 = new Integer(splitLine[1]);
@@ -85,10 +138,15 @@ public class Graph {
         edgesJSONArray = new JSONArray();
         nodesJSONArray = new JSONArray();
         nodes = new HashMap<Integer, Node>();
+
         String[] lines = textData.split("[\\r\\n]+");
         for (String line : lines){
             line = line.trim();
-            String[] splitLine = line.split("\t");
+            // Make it such that the file can be comma separated, tab separated or space separated
+            line = line.replaceAll("\t", " "); // replace all tabs with spaces
+            line = line.replaceAll(",", " "); // replace all commas with spaces
+            line = line.replaceAll(" +", " "); // replace multi space separated data with single spaces
+            String[] splitLine = line.split(" ");
             if (splitLine.length == 2){
                 Integer n1 = new Integer(splitLine[0]);
                 Integer n2 = new Integer(splitLine[1]);
@@ -143,7 +201,7 @@ public class Graph {
     }
 
     public JSONObject generateGraphJSONObj() {
-        return new JSONObject().put("nodes", nodesJSONArray).put("edges", edgesJSONArray);
+        return new JSONObject().put("nodes", nodesJSONArray).put("edges", edgesJSONArray).put("nemo", nemoTest);
     }
 
     // returns -1 if the edge does not exist or the id of the edge if it does
