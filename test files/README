@@ -1,0 +1,31 @@
+################################### Test files #####################################
+
+Each folder (except for the first) contains two files that should be input into the https://nmvis.azurewebsites.net/
+site as described in the program manual to test for functionality and to verify that the
+application works as expected.
+
+Make sure to set the motif size indicated by the folder name when testing, else the motifs will not be displayed.
+Also, make sure the graph file is provided as the first file in the form and the nemoCollect file as the second in the appropriate file input box.
+
+Test 1: Tests only graph input, copy and past the graph into the field or attach the
+	File. Display the graph. Selecting the motif size will have no effect.
+
+Test 2: Size 3 motif
+	Tests the input for a large graph (over 1000 nodes and edges)
+	Also test that the motif card works, and that clicking on the "Show motif 		instance" button highlights the motif in the graph. Should show button(s) that
+	will allow for the navigation through motif instances below the main network.
+
+Test 3: Size 5 Motif
+	Tests the above plus the button/paging functionality that is displayed when more
+	than 6 motifs are present in an input nemoCollect file.
+	*Note: these motifs are not necessarily the correct classification of motifs as
+	that were created manually for testing.
+
+Test 4: Size 8 Motif
+	Same as above for the max motif size allowed. 
+	*Note: these motifs are not necessarily the correct classification of motifs as
+	that were created manually for testing.
+
+####################################################################################
+
+

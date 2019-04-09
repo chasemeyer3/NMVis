@@ -63,8 +63,9 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
     <div class="container">
 
       <h3>To get started, simply input motif and network data for your graph and click "Show Network Motifs".</h3>
-      <h4>An example network data text file can be downloaded <a href="https://nmvis.azurewebsites.net/exampleGraph.txt">here</a>. An example nemoCollect text file can be downloaded <a href="https://nmvis.azurewebsites.net/nemoCollect.txt">here</a>.</h4>
-      <h4>If you are new to the site and want to learn more click <a href="https://nmvis.azurewebsites.net/sitehelp.pdf">here</a>. This includes information about input file format.</h4>
+      <h4>An example network data text file can be downloaded <a href="https://nmvis.azurewebsites.net/exampleGraph.txt">here</a>. </h4>
+      <h4>An example nemoCollect text file can be downloaded <a href="https://nmvis.azurewebsites.net/nemoCollect.txt">here</a>.</h4>
+      <h4>If you are new to the site and want to learn more, including input format allowed, click <a href="https://nmvis.azurewebsites.net/sitehelp.pdf">here</a>.</h4>
 
       <form id="dataForm" action="https://nmvis.azurewebsites.net/graph" method="post" enctype="multipart/form-data" roll="form">
         <textarea name="graphData" class="textInput" id="graphData" rows="8" cols="80" value="" placeholder="Paste network data here"></textarea>
@@ -88,12 +89,14 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
             </select>
           </div>
           <div class="col">
             <%-- For specifying number of random graphs to generate --%>
-            <label for="numRand">Number of Random Graphs Generated: </label>
-            <input class="form-control" type="text" name="numRand" id="numRand" value="1000">
+            <%-- <label for="numRand">Number of Random Graphs Generated: </label> --%>
+            <input class="form-control" type="text" name="numRand" id="numRand" value="1000" style="display: none;">
           </div>
         </div>
 
@@ -647,8 +650,8 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
         if (document.getElementById("graphFile").files.length != 0){
           var inFile = document.getElementById("graphFile").files[0];
           // going to check that the file size is within limits
-          if (inFile.size > 100000){  // limit is 100 KB -> 100000 bytes
-            alert("The provided file is too large. Text file with graph data should be 100 KB or less. Graphs this large are difficult to visualize, we're sorry for the inconvenience.");
+          if (inFile.size > 50000){  // limit is 50 KB -> 50000 bytes
+            alert("The provided file is too large. Text file with graph data should be 50 KB or less. Graphs this large are difficult to visualize, we're sorry for the inconvenience.");
             return false;
           }
           return true;

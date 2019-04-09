@@ -67,7 +67,7 @@ public class Graph {
 //            // checking the exit value of subprocess
 //            sb.append("exit value: " + pro.exitValue());
 //
-//            String[] nargs = {"exampleGraph.txt", "1"};
+//            String[] nargs = {".txt", "1"}; // TODO
 //            //Process runtimeProcess = Runtime.getRuntime().exec("D:\\home\\site\\wwwroot\\webapps\\ROOT\\", null, new File("D:\\home\\site\\wwwroot\\webapps\\ROOT\\"));
 //
 //            // to catch command line output
