@@ -97,6 +97,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
             <%-- For specifying number of random graphs to generate --%>
             <%-- <label for="numRand">Number of Random Graphs Generated: </label> --%>
             <input class="form-control" type="text" name="numRand" id="numRand" value="1000" style="display: none;">
+            <%-- For specifying the accepted z-score value and p-value--%>
+            <%-- <label for="zScore">Accept Motifs with Z-Score Greater Than (Default is 2.0)</label> --%>
+            <input class="form-control" type="text" name="zScore" id="zScore" value="2.0" style="display: none;">
+            <%-- <label for="zScore">Accept Motifs with P-Score Less Than (Default is 0.01)</label> --%>
+            <input class="form-control" type="text" name="pVal" id="pVal" value="0.01" style="display: none;">
           </div>
         </div>
 

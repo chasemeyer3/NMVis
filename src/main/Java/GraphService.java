@@ -3,21 +3,20 @@ import org.json.JSONArray;
 
 import java.io.*; // InputStream
 import java.util.HashMap;
-import java.util.Iterator;
 
 public class GraphService {
 
-    private Graph network; // the complete network
+    private JSONGraph network; // the complete network
     private HashMap<Integer, Motif> motifs; // a list of all the motifs in the graph (from NemoCollect)
 
     // this is here for testing, will not really be used at this point
-    public GraphService(Graph g){
+    public GraphService(JSONGraph g){
         motifs = new HashMap<>();
         network = g;
     }
 
-    // Constructor initializes the motif array and assigns all of the motifs found in
-    public GraphService(Graph g, InputStream fileData, Integer motifSize){
+    // Constructor initializes the motif array and assigns all of the motifs found
+    public GraphService(JSONGraph g, InputStream fileData, Integer motifSize){
         network = g;
         motifs = new HashMap<>();
         try (BufferedReader strReader = new BufferedReader(new InputStreamReader(fileData))){

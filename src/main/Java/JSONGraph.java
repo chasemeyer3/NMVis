@@ -1,11 +1,12 @@
 import java.io.*; // InputStream
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Graph {
+public class JSONGraph {
 
     protected class Node {
         private Integer id;
@@ -47,12 +48,14 @@ public class Graph {
     protected JSONArray edgesJSONArray;
     protected JSONArray nodesJSONArray;
     protected String nemoTest;
+    protected ArrayList<String> inputLines; // lines of the file or input string are input here to be returned for use by graphParser in nemolib
 
-    public Graph(InputStream fileData){
+    public JSONGraph(InputStream fileData){
         Integer edgeID = 0; // unique id assigned to each edge (for color changing in vis.js), will be same as motif edge
         edgesJSONArray = new JSONArray();
         nodesJSONArray = new JSONArray();
         nodes = new HashMap<Integer, Node>();
+        inputLines = new ArrayList<String>();
 
         // TESTING NemoLib Integration: Future Work
         // try {
@@ -115,6 +118,10 @@ public class Graph {
                 line = line.replaceAll("\t", " "); // replace all tabs with spaces
                 line = line.replaceAll(",", " "); // replace all commas with spaces
                 line = line.replaceAll(" +", " "); // replace multi space separated data with single spaces
+
+                // add the line to the List of input lines (for nemolib)
+                inputLines.add(line);
+
                 String[] splitLine = line.split(" ");
                 if (splitLine.length == 2){
                     Integer n1 = new Integer(splitLine[0]);
@@ -133,11 +140,12 @@ public class Graph {
         }
     }
 
-    public Graph(String textData){
+    public JSONGraph(String textData){
         Integer edgeID = 0;
         edgesJSONArray = new JSONArray();
         nodesJSONArray = new JSONArray();
         nodes = new HashMap<Integer, Node>();
+        inputLines = new ArrayList<String>();
 
         String[] lines = textData.split("[\\r\\n]+");
         for (String line : lines){
@@ -146,6 +154,10 @@ public class Graph {
             line = line.replaceAll("\t", " "); // replace all tabs with spaces
             line = line.replaceAll(",", " "); // replace all commas with spaces
             line = line.replaceAll(" +", " "); // replace multi space separated data with single spaces
+
+            // add the line to the List of input lines (for nemolib)
+            inputLines.add(line);
+
             String[] splitLine = line.split(" ");
             if (splitLine.length == 2){
                 Integer n1 = new Integer(splitLine[0]);
@@ -160,11 +172,11 @@ public class Graph {
         }
     }
 
-    public Graph(){
-
+    public JSONGraph(){
         edgesJSONArray = new JSONArray();
         nodesJSONArray = new JSONArray();
         nodes = new HashMap<Integer, Node>();
+        inputLines = new ArrayList<String>();
     }
 
     // to add a node to the graph without adding edges (used by the Motif class)
@@ -211,5 +223,9 @@ public class Graph {
             return nodes.get(n1).hasEdge(n2);
         }
         return -1;
+    }
+
+    public ArrayList<String> getLines(){
+        return inputLines;
     }
 }

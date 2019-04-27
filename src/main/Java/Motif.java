@@ -8,8 +8,9 @@ import org.json.JSONObject;
 public class Motif {
 
     private Integer id;
+    private String label;
     private int size;
-    private ArrayList<Graph> motifGraphs; // list of all the subgraphs with this motif
+    private ArrayList<JSONGraph> motifGraphs; // list of all the subgraphs with this motif
     private double stdDev;
     private double pValue;
     private double zScore;
@@ -24,15 +25,32 @@ public class Motif {
         motifGraphs = new ArrayList<>();
         count = 0;
     }
+
+    public Motif(String labelIn, double stdDevIn, double pValIn, double zScoreIn, double freqRandIn, double freqOrigIn) {
+        label = labelIn;
+        stdDev = stdDevIn;
+        pValue = pValIn;
+        zScore = zScoreIn;
+        freqRand = freqRandIn;
+        freqOrig = freqOrigIn;
+    }
+
+    public void setSize (int sz){
+        size = sz;
+    }
+    public void setCount (int countIn){
+        count = countIn;
+    }
+
     // function to add a new subgraph instance of the motif (from nemoCollect), found in the network
     // Uses the parent network to find all connected edges between the nodes
-    public void newInstance(String line, Graph network){
+    public void newInstance(String line, JSONGraph network){
         ArrayList<Integer> subGNodes = new ArrayList<>();
         line = line.trim(); // trim spaces off of end
         String[] splitLine = line.split(" "); // split at space
         if (splitLine.length == size){ // have to use greater than b/c file given has extra comma at the end
             count++;
-            Graph curSubG = new Graph();
+            JSONGraph curSubG = new JSONGraph();
             for (int i = 0; i < splitLine.length; i++){
                 Integer curNodeId = new Integer(splitLine[i]);
                 curSubG.addNode(curNodeId);
