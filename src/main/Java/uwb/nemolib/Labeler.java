@@ -1,4 +1,4 @@
-package uwb;
+package uwb.nemolib;
 
 import java.io.*;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public final class Labeler {
 	static int instanceCounter = 0;
 	
     // labelg program options
-    private static final String labelGPath = "src/main/resources/labelg";
+    private static final String labelGPath = "/Users/chasemeyer/Desktop/MSCSSE/advBioAlgs/nauty27rc1/labelg";
     private static final int invariant = 3;
     private static final int mininvarlevel = 1;
     private static final int maxinvarlevel = 100;

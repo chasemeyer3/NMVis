@@ -14,6 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,11 +64,11 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
     <div class="container">
 
       <h3>To get started, simply input motif and network data for your graph and click "Show Network Motifs".</h3>
-      <h4>An example network data text file can be downloaded <a href="https://nmvis.azurewebsites.net/exampleGraph.txt">here</a>. </h4>
-      <h4>An example nemoCollect text file can be downloaded <a href="https://nmvis.azurewebsites.net/nemoCollect.txt">here</a>.</h4>
-      <h4>If you are new to the site and want to learn more, including input format allowed, click <a href="https://nmvis.azurewebsites.net/sitehelp.pdf">here</a>.</h4>
+      <h4>An example network data text file can be downloaded <a href="http://bioresearch02p.uwb.edu:8080/NMVis/exampleGraph.txt">here</a>. </h4>
+      <h4>An example nemoCollect text file can be downloaded <a href="http://bioresearch02p.uwb.edu:8080/NMVis/nemoCollect.txt">here</a>.</h4>
+      <h4>If you are new to the site and want to learn more, including input format allowed, click <a href="http://bioresearch02p.uwb.edu:8080/NMVis/sitehelp.pdf">here</a>.</h4>
 
-      <form id="dataForm" action="https://nmvis.azurewebsites.net/graph" method="post" enctype="multipart/form-data" roll="form">
+      <form id="dataForm" action="http://bioresearch02p.uwb.edu:8080/NMVis/graph" method="post" enctype="multipart/form-data" roll="form">
         <textarea name="graphData" class="textInput" id="graphData" rows="8" cols="80" value="" placeholder="Paste network data here"></textarea>
 
         <div class="uploadFile">
@@ -95,13 +96,13 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
           </div>
           <div class="col">
             <%-- For specifying number of random graphs to generate --%>
-            <%-- <label for="numRand">Number of Random Graphs Generated: </label> --%>
-            <input class="form-control" type="text" name="numRand" id="numRand" value="1000" style="display: none;">
+            <label for="numRand">Number of Random Graphs Generated: </label>
+            <input class="form-control" type="text" name="numRand" id="numRand" value="1000">  <%-- to not show     style="display: none;"> --%>
             <%-- For specifying the accepted z-score value and p-value--%>
-            <%-- <label for="zScore">Accept Motifs with Z-Score Greater Than (Default is 2.0)</label> --%>
-            <input class="form-control" type="text" name="zScore" id="zScore" value="2.0" style="display: none;">
-            <%-- <label for="zScore">Accept Motifs with P-Score Less Than (Default is 0.01)</label> --%>
-            <input class="form-control" type="text" name="pVal" id="pVal" value="0.01" style="display: none;">
+            <label for="zScore">Accept Motifs with Z-Score Greater Than (Default is 2.0)</label>
+            <input class="form-control" type="text" name="zScore" id="zScore" value="2.0">
+            <label for="zScore">Accept Motifs with P-Score Less Than (Default is 0.01)</label>
+            <input class="form-control" type="text" name="pVal" id="pVal" value="0.01">
           </div>
         </div>
 
@@ -740,7 +741,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
           //console.log("Getting to showLoading!");
           var request = new XMLHttpRequest();
           // Open a new connection, using the GET request on the URL endpoint
-          request.open('POST', 'https://nmvis.azurewebsites.net/graph', true);
+          request.open('POST', 'http://bioresearch02p.uwb.edu:8080/NMVis/graph', true);
 
           request.onload = function () {
             jsonData = JSON.parse(this.response);
@@ -767,7 +768,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
       //     var request = new XMLHttpRequest();
       //
       //     // Open a new connection, using the GET request on the URL endpoint
-      //     request.open('POST', 'https://nmvis.azurewebsites.net/graph', true);
+      //     request.open('POST', 'http://bioresearch02p.uwb.edu:8080/NMVis/graph', true);
       //
       //     request.onload = function () {
       //       // Begin accessing JSON data here
@@ -828,7 +829,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
       //         var request = new XMLHttpRequest();
       //
       //         // Open a new connection, using the GET request on the URL endpoint
-      //         request.open('GET', 'https://nmvis.azurewebsites.net/graph', true);
+      //         request.open('GET', 'http://bioresearch02p.uwb.edu:8080/NMVis/graph', true);
       //
       //         request.onload = function () {
       //           // Begin accessing JSON data here

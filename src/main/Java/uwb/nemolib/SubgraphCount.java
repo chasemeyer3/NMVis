@@ -1,4 +1,4 @@
-package uwb;
+package uwb.nemolib;
 
 import java.util.HashMap;
 import java.util.Map;

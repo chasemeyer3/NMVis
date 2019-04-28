@@ -15,7 +15,7 @@ public class NetworkMotifDetector {
 	private static final double DEFAULT_PVAL = 0.01;
 	private static final int DEFAULT_NUMRANDGRAPHS = 1000;
 
-
+	public static void main (String[] args) {
 
 	private ArrayList<String> lines;
 	private int inputMotifSize;

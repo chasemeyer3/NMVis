@@ -31,8 +31,6 @@ public class GraphServlet extends HttpServlet {
         // if the input is String representation of graph
         if (inputText != null && !inputText.equals("")){
             reqGraph = new JSONGraph(inputText);
-
-
         }
         // if a file with the graph info was input
         else {
@@ -40,7 +38,6 @@ public class GraphServlet extends HttpServlet {
             if (filePart != null){
                 InputStream fileData = filePart.getInputStream();
                 reqGraph = new JSONGraph(fileData);
-
             }
             else {
                 reqGraph = new JSONGraph(); // will generate graph with one node that says "ERROR!", should never get here
