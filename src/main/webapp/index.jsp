@@ -98,11 +98,19 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
             <%-- For specifying number of random graphs to generate --%>
             <label for="numRand">Number of Random Graphs Generated: </label>
             <input class="form-control" type="text" name="numRand" id="numRand" value="1000">  <%-- to not show     style="display: none;"> --%>
-            <%-- For specifying the accepted z-score value and p-value--%>
+            <%-- For specifying the accepted z-score value and p-value --%>
+            <div class="form-group form-check">
+              <span>Filters network motifs by Z-Score of 2.0 OR P-Value of 0.01 by default.</span>
+              <input type="checkbox" class="form-check-input" id="zScoreCheck" onClick="showZScoreInput()">
+              <label class="form-check-label" for="zScoreCheck">Filter by Z-Score?</label>
+              <input type="checkbox" class="form-check-input" id="pValCheck" onClick="showPValInput()">
+              <label class="form-check-label" for="pValCheck">Filter by P-Value?</label>
+            </div>
+
             <label for="zScore">Accept Motifs with Z-Score Greater Than (Default is 2.0)</label>
-            <input class="form-control" type="text" name="zScore" id="zScore" value="2.0">
+            <input class="form-control" type="text" name="zScore" id="zScore" value="2.0" hidden>
             <label for="zScore">Accept Motifs with P-Score Less Than (Default is 0.01)</label>
-            <input class="form-control" type="text" name="pVal" id="pVal" value="0.01">
+            <input class="form-control" type="text" name="pVal" id="pVal" value="0.01" hidden>
           </div>
         </div>
 
@@ -115,7 +123,6 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
       </form>
 
     </div>
-
 
     <%-- Code for loader and Graph box, which shows if requested by user --%>
     <br>
@@ -363,6 +370,18 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.--%
       var curHLCard = -1; // current hightlighted card, -1 if none highlighted. Used to readjust colors
       var curHLIndex = -1;
       var network;
+
+      function showPValInput() {
+        if (document.getElementById('pValCheck').checked) {
+          document.getElementById('pVal').hidden = false;
+        }
+      }
+
+      function showZScoreInput() {
+        if (document.getElementById('zScoreCheck').checked) {
+          document.getElementById('zScore').hidden = false;
+        }
+      }
 
       // will change to the highlighted subgraph instance to the next one for the motif
       function motifInstFwd(){

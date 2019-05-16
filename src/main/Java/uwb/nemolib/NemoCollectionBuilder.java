@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uwb.nemolib;
+package edu.uwb.nemolib;
 
 import java.util.*;
 import java.io.IOException;
@@ -119,6 +119,9 @@ private static void writeToFile(SubgraphCollection sp,
                 String [] arrOfStr=currentLine.split(":");
                 String g6 = arrOfStr[1];
                 String nextline = reader.readLine().replaceAll("\\[|\\]", "");
+                nextline = nextline.replaceAll("\t", ""); // replace all tabs with spaces
+                nextline = nextline.replaceAll(" +", ""); // replace multi space separated data with single spaces
+                System.out.println(nextline);
                 String [] vertices = nextline.split("\\,|WWs");
                 String vertexline="[";
                 for (int i=0;i<vertices.length-1;i++){
